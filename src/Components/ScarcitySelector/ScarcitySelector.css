@@ -1,0 +1,15 @@
+.scarcity-selector {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+input {
+
+}
+
+label {
+    border: solid 1px black;
+    padding: 5px;
+    margin: 10px;
+
+}

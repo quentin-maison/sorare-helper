@@ -1,0 +1,16 @@
+
+.limited {
+    background-color: lightgoldenrodyellow;
+}
+
+.rare {
+    background-color: lightpink;
+}
+
+.super-rare {
+    background-color: lightskyblue;
+}
+
+.unique {
+    background-color: lightgrey;
+}
