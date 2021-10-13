@@ -7,6 +7,10 @@ export function CardGenerator(props) {
     const [position, setPosition] = useState();
     const [score, setScore] = useState();
     const [id, setId] = useState();
+    const [xp, setXp] = useState();
+    const [zone, setZone] = useState();
+    const [u23, setU23] = useState();
+    
 
 
     const getRandomName = () => {
@@ -37,22 +41,49 @@ export function CardGenerator(props) {
         setId(randomId)
     }
 
+    const getRandomXp = () => {
+        const randomXp = Math.floor(Math.random() * 20) / 2;
+        setXp(randomXp)
+    }
+
+    const getRandomZone = () => {
+        const zoneArray = ['champion-europe', 'challenger-europe', 'champion-america', 'champion-asia']
+        const randomZone = zoneArray[Math.floor(Math.random() * zoneArray.length)]
+        setZone(randomZone)
+    }
+
+    const getRandomU23 = () => {
+        if (Math.random() < 0.5) {
+            setU23(true)
+        } else {
+            setU23(false)
+        }
+    }
+
     const addRandomCard = () => {
+
         getRandomName();
         getRandomScarcity();
         getRandomPosition();
         getRandomScore();
         getRandomId();
-        props.addCard(name, scarcity, position, score, id);
-    }
+        getRandomXp();
+        getRandomZone();
+        getRandomU23();
 
- 
+        props.addCard(name, scarcity, position, score, id, xp, zone, u23)
+     }
+
+
+
+
+
 
     return(
 
         <div className="card-generator">
             <button onClick={addRandomCard}>GENERATE RANDOM CARD</button>
-  
+            
         </div>
         
 

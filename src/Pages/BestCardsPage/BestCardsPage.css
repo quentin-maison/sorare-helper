@@ -1,0 +1,40 @@
+.best-cards-page {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 1px black;
+}
+
+
+.scarcity-selection {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: solid 1px black;
+}
+
+.best-cards-page-header {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: solid 1px black;
+}
+
+.best-cards-page-header h2 {
+    color: rgb(44, 54, 94);
+}
+
+.best-cards-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    border: solid 1px black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}

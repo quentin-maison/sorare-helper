@@ -36,7 +36,7 @@ export function ForwardList(props) {
     
     return(
         <div id="forward-list" className="list-template">
-            <h2>FORWARD LIST</h2>
+            <h3>FORWARD LIST</h3>
             <p>Only top 10 cards</p>
                 {
                     cardsToDisplay.map(
@@ -47,6 +47,9 @@ export function ForwardList(props) {
                                 position={card.position}
                                 score={card.score}
                                 id={card.id}
+                                xp={card.xp}
+                                zone={card.zone}
+                                u23={card.u23}
                                 key={card.id} />)
                         )
                 }

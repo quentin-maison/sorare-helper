@@ -36,7 +36,7 @@ export function GoalList(props) {
     
     return(
         <div id="goal-list" className="list-template">
-            <h2>GOAL LIST</h2>
+            <h3>GOAL LIST</h3>
             <p>Only top 10 cards</p>
                 {
                     cardsToDisplay.map(
@@ -47,6 +47,9 @@ export function GoalList(props) {
                                 position={card.position}
                                 score={card.score}
                                 id={card.id}
+                                xp={card.xp}
+                                zone={card.zone}
+                                u23={card.u23}
                                 key={card.id} />)
                         )
                 }

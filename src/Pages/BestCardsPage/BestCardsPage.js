@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
-import {ScarcitySelector} from '../ScarcitySelector/ScarcitySelector'
-import {GoalList} from '../Lists/GoalList'
-import {DefenderList} from '../Lists/DefenderList'
-import {MidfielderList} from '../Lists/MidfielderList'
-import {ForwardList} from '../Lists/ForwardList'
-import './DisplayCardList.css'
 
-export function DisplayCardList(props) {
+import {ScarcitySelector} from '../../Components/ScarcitySelector/ScarcitySelector'
+import {GoalList} from '../../Components/Lists/GoalList'
+import {DefenderList} from '../../Components/Lists/DefenderList'
+import {MidfielderList} from '../../Components/Lists/MidfielderList'
+import {ForwardList} from '../../Components/Lists/ForwardList'
+import './BestCardsPage.css'
+
+
+
+export function BestCardsPage(props) {
     const [limited, setLimited] = useState(true);
     const [rare, setRare] = useState(true);
     const [superRare, setSuperRare] = useState(true);
@@ -27,20 +30,23 @@ export function DisplayCardList(props) {
     const handleUniqueChange = () => {
         setUnique(!unique)
     }
-    
-    
-    
+
     return (
-        
+        <div className="best-cards-page">
 
-        <div className="card-gallery">
-            <ScarcitySelector
-                handleLimitedChange={handleLimitedChange}
-                handleRareChange={handleRareChange}
-                handleSuperRareChange={handleSuperRareChange}
-                handleUniqueChange={handleUniqueChange}/>
-
-            <div className="list-container">
+            <div className="best-cards-page-header">
+                <h2>TOP CARDS PER POSITION</h2>
+            </div>
+            
+            <div className="scarcity-selection">
+                <ScarcitySelector
+                                handleLimitedChange={handleLimitedChange}
+                                handleRareChange={handleRareChange}
+                                handleSuperRareChange={handleSuperRareChange}
+                                handleUniqueChange={handleUniqueChange}/>
+            </div>
+            
+            <div className="best-cards-container">
                 <GoalList cardsList={props.cardsList} limited={limited} rare={rare} superRare={superRare} unique={unique}/>
                 <DefenderList cardsList={props.cardsList} limited={limited} rare={rare} superRare={superRare} unique={unique}/>
                 <MidfielderList cardsList={props.cardsList} limited={limited} rare={rare} superRare={superRare} unique={unique}/>
@@ -48,9 +54,5 @@ export function DisplayCardList(props) {
             </div>
             
         </div>
-        
-        
-        
-        
-    );
+    );    
 }

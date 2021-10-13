@@ -36,7 +36,7 @@ export function MidfielderList(props) {
     
     return(
         <div id="midfielder-list" className="list-template">
-            <h2>MIDFIELDER LIST</h2>
+            <h3>MIDFIELDER LIST</h3>
             <p>Only top 10 cards</p>
                 {
                     cardsToDisplay.map(
@@ -47,6 +47,9 @@ export function MidfielderList(props) {
                                 position={card.position}
                                 score={card.score}
                                 id={card.id}
+                                xp={card.xp}
+                                zone={card.zone}
+                                u23={card.u23}
                                 key={card.id} />)
                         )
                 }

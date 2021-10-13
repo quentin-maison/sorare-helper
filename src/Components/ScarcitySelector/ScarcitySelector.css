@@ -1,15 +1,17 @@
+
+
 .scarcity-selector {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-input {
-
-}
-
-label {
+.scarcity-selector label {
     border: solid 1px black;
     padding: 5px;
-    margin: 10px;
-
+    margin-right: 10px;
+    width: 100px;
+    text-align: center;
 }

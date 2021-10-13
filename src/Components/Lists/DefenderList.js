@@ -36,7 +36,7 @@ export function DefenderList(props) {
     
     return(
         <div id="defender-list" className="list-template">
-            <h2>DEFENDER LIST</h2>
+            <h3>DEFENDER LIST</h3>
             <p>Only top 10 cards</p>
                 {
                     cardsToDisplay.map(
@@ -47,6 +47,9 @@ export function DefenderList(props) {
                                 position={card.position}
                                 score={card.score}
                                 id={card.id}
+                                xp={card.xp}
+                                zone={card.zone}
+                                u23={card.u23}
                                 key={card.id} />)
                         )
                 }
