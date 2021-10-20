@@ -1,0 +1,80 @@
+.card {
+    margin: 5px;
+
+    width: 280px;
+    height: 80px;
+
+    border-radius: 5px;
+    box-shadow: 4px 2px 2px lightgray;
+
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*SCARCITY*/
+
+.limited {
+    background-color: rgb(255, 255, 200);
+}
+
+.rare {
+    background-color: rgb(250, 160, 160);
+
+}
+
+.super-rare {
+    background-color: rgb(140, 200, 250);
+}
+
+.unique {
+    background-color: rgb(200, 200, 230);
+}
+
+
+/*CARD IMAGE*/
+
+.card-image img {
+    height: 60px;
+    width: 40px;
+}
+
+/*CARD INFOS*/
+
+.card-infos img {
+    height: 16px;
+    width: 16px;
+}
+
+/*PLAYER SCORE*/
+
+.card-score div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.player-score {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.player-score-low {
+    background-color: rgb(238, 154, 27);
+}
+
+.player-score-medium {
+    background-color: rgb(239, 206, 30);
+}
+
+.player-score-high {
+    background-color: rgb(176, 199, 36);
+}
+
+.player-score-very-high {
+    background-color: rgb(0, 172, 70);
+}
