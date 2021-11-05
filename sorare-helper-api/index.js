@@ -12,6 +12,14 @@ app.get('/*', (req, res) => {
   })
   
 })
+app.post('/*', (req, res) => {
+  res.set('Content-Type', 'text/plain');
+  axios.post('https://api.sorare.com' + req.path, req.body).then((response) => {
+    res.set('Access-Control-Allow-Origin', '*')
+    res.json(response.data)
+  })
+  
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

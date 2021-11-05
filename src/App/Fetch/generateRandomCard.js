@@ -19,7 +19,7 @@ export function generateRandomCard () {
 
 
 const getRandomName = () => {
-    const nameArray = ['Albert', 'Baptiste', 'Corentin', 'Dimitri', 'Elgar Costa', 'Genesio']
+    const nameArray = ['Albert', 'Baptiste', 'Corentin', 'Dimitri', 'Elgar Costa', 'Gerard Moreno Nomtrèslong']
     return nameArray[Math.floor(Math.random() * nameArray.length)]
 }
 

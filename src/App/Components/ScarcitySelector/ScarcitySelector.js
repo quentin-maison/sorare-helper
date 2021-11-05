@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+
+//CSS
 import './ScarcitySelector.css'
 
 export function ScarcitySelector (props) {
@@ -47,11 +49,11 @@ export function ScarcitySelector (props) {
 
     
     return (
-        <div className="scarcity-selector">
-            <button class={styleButtonLimited} onClick={handleLimitedChange}>Limited</button>
-            <button class={styleButtonRare} onClick={handleRareChange}>Rare</button>
-            <button class={styleButtonSuperRare} onClick={handleSuperRareChange}>Super Rare</button>
-            <button class={styleButtonUnique} onClick={handleUniqueChange}>Unique</button>    
+        <div className='scarcity-selector'>
+            <button className={styleButtonLimited} onClick={handleLimitedChange}>Limited</button>
+            <button className={styleButtonRare} onClick={handleRareChange}>Rare</button>
+            <button className={styleButtonSuperRare} onClick={handleSuperRareChange}>Super Rare</button>
+            <button className={styleButtonUnique} onClick={handleUniqueChange}>Unique</button>    
         </div>
     );
 }

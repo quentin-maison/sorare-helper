@@ -1,56 +1,17 @@
-/*BEST CARDS PAGE*/
-
-.bestCards-page {
-    padding-top: 60px;
-    padding-bottom: 25px;
-
-    margin-right: 10px;
-    margin-left: 10px;
-
-    background-color: white;
-}
-
-/*GALLERY*/
-
-.gallery {
-
-    margin-top: 25px;
-    margin-left: 3%;
-    margin-right: 3%;
-
-    padding-top: 10px;
-    padding-bottom: 20px;
-
+.best-cards-page {
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
 
-.gallery h2 {
-    margin-left: 10px;
-    font-size: 40px;
+.best-cards-page .best-cards-page-item h2 {
+    color: rgb(30, 30, 70);
+    text-align: center;
 }
 
-.player-list-container {
+
+.best-cards-page-item-player-gallery {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-
-
-    margin-top: 20px;
-
-}
-
-.player-list-item {
-    border: solid 1px gray;
-    border-radius: 5px;
-    flex-basis: 250px;
-
-    margin-right: 20px;
-    margin-top: 20px;
-    background-color: rgb(243, 246, 253);
-
-
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
 }

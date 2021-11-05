@@ -1,91 +1,80 @@
-import {Switch, Route, NavLink} from "react-router-dom";
-import React, {useState, useEffect} from 'react'
+import {Switch, Route} from 'react-router-dom';
+import React, {useState} from 'react'
 
 
 //PAGES
-import {HomePage} from './Pages/HomePage/HomePage'
 import {BestCardsPage} from './Pages/BestCardsPage/BestCardsPage'
-import {GameweekCenterPage} from './Pages/GameweekCenterPage/GameweekCenterPage'
+import {BestLineUpPage} from './Pages/BestLineUpPage/BestLineUpPage'
 
-//SUPPORT-FUNCTIONS
-import {getCardsList, getNextGWInfos} from './Fetch/handleNewRequest'
+//COMPONENTS
+import {Menu} from './Components/Menu/Menu'
+import {SearchStatus} from './Components/SearchStatus/SearchStatus'
 
+//FECTH
+import {inputValidation} from './Fetch/inputValidation'
+import {getCardsList} from './Fetch/getCardsList'
+import {getGWInfos} from './Fetch/getGWInfos'
 
-
-import './App.css';
-
+//CSS
+import './App.css'
 
 function App() {
 
-  const [manager, setManager] = useState('')
+
+  const [manager, setManager] = useState('');
   const [managerFound, setManagerFound] = useState(false)
-  const [cardsList, setCardsList] = useState([])
-  const [nextGW, setNextGW] = useState('')
-
-  useEffect(
-    () => {
+  const [cardsList, setCardsList] = useState([]);
+  const [nextGWInfos, setNextGWInfos] = useState('No GW')
 
 
+  const handleManagerSearch = (managerName) => {
 
-    }, [cardsList]
-  )
+    if (inputValidation(managerName)) {
+      const newCardsList = getCardsList(managerName)
+      const newGWInfos = getGWInfos()
 
-  const handleManagerChange = (newManager) => {
+      setManager(managerName)
+      setManagerFound(true)
+      setCardsList(newCardsList)
+      setNextGWInfos(newGWInfos)
 
-    setManager(newManager)
-    setCardsList(getCardsList(manager))
-    setNextGW(getNextGWInfos())
-    setManagerFound(true)
+    } else {
+
+      setManager(managerName)
+      setManagerFound(false)
+      setCardsList([])
+      setNextGWInfos('Not found')
+    }
+
   }
 
 
   return (
     <div>
-
-      <nav className="nav-bar">
-        <NavLink to="/home">HOME</NavLink>
-        <NavLink to="/best-cards">BEST CARDS</NavLink>
-        <NavLink to="/gameweek-center">GAMEWEEK CENTER</NavLink>
-      </nav>
-
+  
+      <Menu handleManagerSearch={handleManagerSearch}/>
 
       <main>
+          <SearchStatus managerFound={managerFound} manager={manager}/>
 
         <Switch>
-
-          {/*HOME PAGE*/}
-          <Route path="/home">
-            <HomePage/>
-          </Route>
           
-          {/*BEST-CARDS PAGE*/}
           <Route path="/best-cards">
-            <BestCardsPage 
-              cardsList={cardsList} 
-              setManager={setManager} 
-              handleManagerChange={handleManagerChange} 
-              manager={manager} 
-              managerFound={managerFound}/>
+            <BestCardsPage cardsList={cardsList} managerFound={managerFound}/>
           </Route>
 
-          {/*GAMEWEEK-CENTER PAGE*/}
-          <Route path="/gameweek-center">
-            <GameweekCenterPage 
-              cardsList={cardsList} 
-              nextGW={nextGW} 
-              setManager={setManager} 
-              handleManagerChange={handleManagerChange} 
-              manager={manager} 
-              managerFound={managerFound}/>
+          <Route path="/best-lineup">
+            <BestLineUpPage cardsList={cardsList} managerFound={managerFound} nextGWInfos={nextGWInfos}/>              
           </Route>
 
-          {/*FALLBACK PAGE*/}
           <Route path="/">
-            <HomePage/>
+            <BestCardsPage cardsList={cardsList} managerFound={managerFound}/>
           </Route>
 
         </Switch>
-      </main>   
+
+      </main>
+
     </div>
   );
 }

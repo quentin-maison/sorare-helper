@@ -1,0 +1,112 @@
+/*BEST CARD*/
+
+.best-card {
+    border-radius: 10px;
+
+    padding: 5px;
+
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    min-width: 250px;
+
+    box-shadow: 4px 2px 2px lightgray;
+
+}
+
+.name-length {
+    max-width: 150px;
+}
+
+
+/*CARD IMAGE*/
+
+.card-image {
+    display: inline-block;
+    width: 40px;
+    height: 60px;
+
+    margin-left: 5px;
+    
+}
+
+.card-image img {
+    width: 100%;
+}
+
+/*CARD INFOS*/
+
+.card-infos {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 8px;
+}
+
+.card-infos img {
+    height: 15px;
+    width: 15px;
+}
+
+
+/*CARD SCORE*/
+
+.card-score {
+    display: inline-block;
+
+    margin-top: 15px;
+    float: right;
+
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card-score div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+
+.player-score {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.player-score-low {
+    background-color: rgb(238, 154, 27);
+}
+
+.player-score-medium {
+    background-color: rgb(239, 206, 30);
+}
+
+.player-score-high {
+    background-color: rgb(176, 199, 36);
+}
+
+.player-score-very-high {
+    background-color: rgb(0, 172, 70);
+}
+
+
+/*SCARCITY*/
+.limited {
+    background-color: rgb(255, 255, 200);
+}
+
+.rare {
+    background-color: rgb(250, 160, 160);
+
+}
+
+.super-rare {
+    background-color: rgb(140, 200, 250);
+}
+
+.unique {
+    background-color: rgb(200, 200, 230);
+}
+

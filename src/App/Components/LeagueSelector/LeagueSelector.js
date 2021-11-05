@@ -1,5 +1,7 @@
 import React from 'react'
 
+//CSS
+import './LeagueSelector.css'
 
 export function LeagueSelector (props) {
 
@@ -7,19 +9,16 @@ export function LeagueSelector (props) {
         props.handleLeagueChange(e.target.value)
     }
 
+
     return (
-        <div className="league-selector">
-            <label for="league-choice">
-                Division:
-                <select onChange={handleLeagueChange} id="league-choice">
-                    <option value="global-all-star" selected>Global All Star</option>
+        <div className='league-selector'>
+                <select onChange={handleLeagueChange}>
+                    <option value="global-all-star" defaultValue>Global All Star</option>
                     <option value="champion-europe">Champion Europe</option>
                     <option value="challenger-europe">Challenger Europe</option>
                     <option value="champion-america">Champion America</option>
                     <option value="champion-asia">Champion Asia</option>
                 </select>
-            </label>
         </div>
-
     );
 }

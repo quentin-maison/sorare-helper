@@ -1,18 +1,12 @@
-/*SCARCITY SELECTOR*/
-
 .scarcity-selector {
-    background-color: rgb(243, 246, 253);
     padding: 10px;
     margin-left: 10px;
-    
-    border: solid 1px gray;
-    border-radius: 10px;
+
     
     display: flex;
     justify-content: flex-start;
 
     width: 600px;
-
 }
 
 .scarcity-selector button {
@@ -21,7 +15,6 @@
     width: 100px;
     padding: 5px;
 }
-
 
 /*BUTTONS*/
 
