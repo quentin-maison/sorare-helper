@@ -8,8 +8,13 @@
 # testing
 /coverage
 
+/sorare-helper-api/node_modules
+
 # production
 /build
+
+# archives
+/archives
 
 # misc
 .DS_Store

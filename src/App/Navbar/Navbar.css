@@ -1,0 +1,16 @@
+#navbar {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 1;
+}
+
+#navbar button {
+    background-color: rgb(25, 118, 210, 0);
+    border: none;
+    color: white;
+}
+
+.margin-navbar {
+    margin-bottom: 45px;
+}
