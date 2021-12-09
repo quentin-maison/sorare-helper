@@ -57,6 +57,8 @@ export function ManagerInfosPage (props) {
         }, [props.managerInfos]
     )
 
+    const altLogoManager = `Logo for manager ${props.managerInfos.nickname}`
+
     return (
         <div>
 
@@ -66,7 +68,7 @@ export function ManagerInfosPage (props) {
                 <div style={{marginLeft: '6%', marginTop: '15px', marginBottom: '25px'}}>
                     <div style={{display: 'flex'}}>
                         <div style={{width: '80px'}}>
-                            <img style={{width: '100%'}} src={managerInfosClubPictureUrl} alt={props.managerInfos.nickname}/>
+                            <img style={{width: '100%'}} src={managerInfosClubPictureUrl} alt={altLogoManager} title={props.managerInfos.nickname}/>
                         </div>
                         <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '15px'}}>
                             <div style={{marginBottom: '10px'}}>{props.managerInfos.nickname}</div>

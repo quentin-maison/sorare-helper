@@ -10,7 +10,7 @@ import {queryManagerData} from './queryManagerData'
 import {getNextGWSlug} from './getGWSlugs/getGWSlugs'
 
 //URLS TO FETCH
-import {proxyUrl, serverUrl} from './urlsToFetch'
+import {urlGET, urlPOST} from './urlsToFetch'
 
 
 export function Fetch (props) {
@@ -19,14 +19,7 @@ export function Fetch (props) {
     useEffect(
         () => {
 
-            let urlToFetch ;
-            if (props.environment === 'development') {
-                urlToFetch = `${proxyUrl}/graphql`
-            }
-
-            if (props.environment === 'production') {
-                urlToFetch = `${serverUrl}`
-            }
+            const urlToFetch = urlPOST(props.environment)
 
             //GET GW SLUG
             const GWSlug = getNextGWSlug()
@@ -84,26 +77,24 @@ export function Fetch (props) {
     const [managerSlugFound, setManagerSlugFound] = useState(false)
     function getManagerSlug (managerName) {
 
-        let urlToFetch ;
-        if (props.environment === 'development') {
-            urlToFetch = `${proxyUrl}/search/${managerName}`
-        }
-
-        if (props.environment === 'production') {
-            urlToFetch = `${serverUrl}?key=${managerName}`
-        }
+        const urlToFetch = urlGET(props.environment, managerName)
 
         const request = {method: 'GET'}
     
         fetch(urlToFetch, request)
-        .then((response) => response.json())
-        .then((responseJSON) => JSON.parse(responseJSON))
         .then((response) => {
-            if (response !== undefined && response !== null) {
-                if (Object.keys(response).includes('manager')) {
-                    if (Object.keys(response.manager).includes('Slug')) {
-                        setManagerSlug(response.manager.Slug)
-                        props.updateManagerName(response.manager.Nickname)
+            return response.json()
+        })
+        .then((responseJSON) => {
+            if (props.environment === 'development') {return JSON.parse(responseJSON)}
+            if (props.environment === 'production') {return responseJSON}
+        })
+        .then((responseJSON) => {
+            if (responseJSON !== undefined && responseJSON !== null) {
+                if (Object.keys(responseJSON).includes('manager')) {
+                    if (Object.keys(responseJSON.manager).includes('Slug')) {
+                        setManagerSlug(responseJSON.manager.Slug)
+                        props.updateManagerName(responseJSON.manager.Nickname)
                         setManagerSlugFound(true)
                     } else {
                         setManagerSlugFound(false)
@@ -144,14 +135,8 @@ export function Fetch (props) {
 
     function getManagerData (managerSlug) {
 
-        let urlToFetch ;
-        if (props.environment === 'development') {
-            urlToFetch = `${proxyUrl}/graphql`
-        }
+        const urlToFetch = urlPOST(props.environment)
 
-        if (props.environment === 'production') {
-            urlToFetch = `${serverUrl}`
-        }
 
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");

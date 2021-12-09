@@ -17,8 +17,6 @@ import {unavailablePlayer} from '../support-functions/getBestSo5'
 
 export function BestLineupDetails (props) {
 
-    console.log(props.teamToDisplay)
-
     const [GOA, setGOA] = useState(unavailablePlayer(-10))
     const [DEF, setDEF] = useState(unavailablePlayer(-11))
     const [MID, setMID] = useState(unavailablePlayer(-12))

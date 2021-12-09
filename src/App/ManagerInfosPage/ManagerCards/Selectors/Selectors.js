@@ -17,7 +17,7 @@ export function Selectors (props) {
 
 
     return (
-    <div style={{backgroundColor: 'rgb(39, 39, 39, 0.05)', color: 'rgb(80, 132, 211)', position: 'sticky', top:'65px', zIndex: '1'}}>
+    <div style={{backgroundColor: 'rgb(39, 39, 39, 0.05)', color: 'rgb(80, 132, 211)', position: 'sticky', top:'56px', zIndex: '1'}}>
     <Accordion style={{backgroundColor: 'rgb(237, 244, 251)', color: 'rgb(80, 132, 211)'}}>
         <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

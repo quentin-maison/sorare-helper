@@ -11,14 +11,14 @@ import {SearchStatus} from './SearchStatus/SearchStatus'
 
 //SUPPORT FUNCTIONS
 import {getEnvironement} from './Fetch/getEnvironment/getEnvironment'
-import {proxyUrl, serverUrl} from './Fetch/urlsToFetch'
+import {urlPOST} from './Fetch/urlsToFetch'
 
 
 
 function App() {
 
   //ENVIRONMENT
-  const [environment, setEnvironment] = useState(getEnvironement())
+  const environment = getEnvironement()
 
 
   //SERVER STATUS
@@ -26,14 +26,7 @@ function App() {
   useEffect(
     () => {
 
-      let urlToFetch ;
-      if (environment === 'development') {
-          urlToFetch = `${proxyUrl}/graphql`
-      }
-
-      if (environment === 'production') {
-          urlToFetch = `${serverUrl}`
-      }
+      const urlToFetch = urlPOST(environment)
 
       //GET GW SLUG
       const GWSlug = '10-14-dec'
