@@ -37,21 +37,21 @@ export function BestLineupContainer (props) {
     )
 
     //ALERT
-    const altertCard = <Alert severity="info" style={{width: '60%', margin: 'auto'}}>Not enough eligible cards to align team</Alert> ;
+    const altertCard = <Alert severity="info" style={{width: '60%', margin: 'auto', height: '50px', fontSize: '22px', display: 'flex', alignItems: 'center'}}>Not enough eligible cards to align team</Alert> ;
 
     return (
         <div>
 
             <Paper elevation={4} style={{marginLeft: '6%',marginRight: '6%', borderTopLeftRadius: '16px', borderTopRightRadius:'16px', borderBottomLeftRadius: '16px', borderBottomRightRadius:'16px'}}>
-                <div style={{backgroundColor: 'rgb(39, 39, 39)', color: 'white', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '8px', paddingBottom: '8px', borderTopLeftRadius: '16px', borderTopRightRadius:'16px'}}>
-                    TEAM EXPECTED SCORE: <span style={{fontWeight: 600, fontSize: '24px', marginLeft: '16px'}}>{props.displayTeam ? teamExpectedScore.toFixed(0) : '0'}</span><span style={{marginLeft: '10px', alignSelf: 'flex-end'}}>{props.displayTeam ? <ExpandMoreIcon onClick={props.handleDisplayLineupDetails}/> : ''}</span>
+                <div style={{backgroundColor: 'rgb(39, 39, 39)', color: 'white', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '12px', paddingBottom: '12px', borderTopLeftRadius: '16px', borderTopRightRadius:'16px'}}>
+                    <span style={{fontSize: '24px'}}>TEAM EXPECTED SCORE:</span> <span style={{fontWeight: 600, fontSize: '32px', marginLeft: '16px'}}>{props.displayTeam ? teamExpectedScore.toFixed(0) : '0'}</span><span style={{marginLeft: '10px', alignSelf: 'flex-end'}}>{props.displayTeam ? <ExpandMoreIcon onClick={props.handleDisplayLineupDetails}/> : ''}</span>
                 </div>
                 <div style={{backgroundColor: 'white', paddingTop: '28px', paddingBottom: '28px', borderBottomLeftRadius: '16px', borderBottomRightRadius:'16px'}}>
                     
 
                 {
                     !props.displayTeam ? altertCard : 
-                    <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+                    <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginLeft: '5%', marginRight: '5%'}}>
                         <BestLineupCard card={props.teamToDisplay[0]} key={0} position={'GOA'}/>
                         <BestLineupCard card={props.teamToDisplay[1]} key={1} position={'DEF'}/>
                         <BestLineupCard card={props.teamToDisplay[2]} key={2} position={'MID'}/>

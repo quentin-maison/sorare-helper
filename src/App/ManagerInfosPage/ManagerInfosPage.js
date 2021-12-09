@@ -63,16 +63,16 @@ export function ManagerInfosPage (props) {
         <div>
 
 
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgb(39, 39, 39, 0.05)', paddingTop: '25px'}}>
+            <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: 'rgb(39, 39, 39, 0.05)', paddingTop: '25px'}}>
                 
-                <div style={{marginLeft: '6%', marginTop: '15px', marginBottom: '25px'}}>
+                <div style={{marginLeft: '6%', marginTop: '18px', marginBottom: '24px'}}>
                     <div style={{display: 'flex'}}>
                         <div style={{width: '80px'}}>
                             <img style={{width: '100%'}} src={managerInfosClubPictureUrl} alt={altLogoManager} title={props.managerInfos.nickname}/>
                         </div>
-                        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '15px'}}>
-                            <div style={{marginBottom: '10px'}}>{props.managerInfos.nickname}</div>
-                            <div style={{fontSize: '12px'}}>{managerInfosCreationDate}</div>
+                        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around', marginLeft: '15px'}}>
+                            <div style={{fontSize: '32px', fontWeight: '600'}}>{props.managerInfos.nickname}</div>
+                            <div style={{fontSize: '16px'}}>{managerInfosCreationDate}</div>
                         </div>
                     </div>
                 </div>

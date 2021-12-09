@@ -10,21 +10,19 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-//CSS
-import './Selectors.css'
 
 export function Selectors (props) {
 
 
     return (
-    <div style={{backgroundColor: 'rgb(39, 39, 39, 0.05)', color: 'rgb(80, 132, 211)', position: 'sticky', top:'56px', zIndex: '1'}}>
+    <div style={{backgroundColor: 'rgb(39, 39, 39, 0.05)', color: 'rgb(80, 132, 211)', position: 'sticky', top: '70px', zIndex: '1'}}>
     <Accordion style={{backgroundColor: 'rgb(237, 244, 251)', color: 'rgb(80, 132, 211)'}}>
         <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
             >
-            <Typography style={{fontSize: '12px', marginLeft: '6%'}} component={'div'}>
+            <Typography style={{fontSize: '15px', marginLeft: '6%'}} component={'div'}>
                 Select cards infos
               
             </Typography>

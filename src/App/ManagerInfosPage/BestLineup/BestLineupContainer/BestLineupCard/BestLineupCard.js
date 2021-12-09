@@ -38,19 +38,19 @@ export function BestLineupCard (props) {
         if (Object.keys(props.card.currentTeam).includes('pictureUrl')) {
             if (props.card.currentTeam.pictureUrl.length > 10) {
                 altClubImg = `Club logo: ${props.card.currentTeam.name}`
-                clubImg = <img src={props.card.currentTeam.pictureUrl} alt={altClubImg} title={props.card.currentTeam.name} style={{width: '15px'}}/>
-            } else {clubImg = <HelpIcon style={{width: '20px'}}/>}
-        } else {clubImg = <HelpIcon style={{width: '20px'}}/>}
-    } else {clubImg = <HelpIcon style={{width: '20px'}}/>}
+                clubImg = <img src={props.card.currentTeam.pictureUrl} alt={altClubImg} title={props.card.currentTeam.name} style={{width: '25px'}}/>
+            } else {clubImg = <HelpIcon style={{width: '25px'}}/>}
+        } else {clubImg = <HelpIcon style={{width: '25px'}}/>}
+    } else {clubImg = <HelpIcon style={{width: '25px'}}/>}
 
     if (Object.keys(props.card).includes('nextOpponent')) {
         if (Object.keys(props.card.nextOpponent).includes('pictureUrl')) {
             if (props.card.nextOpponent.pictureUrl.length > 10) {
                 altOpponentImg = `Club logo: ${props.card.nextOpponent.name}`
-                opponentImg = <img src={props.card.nextOpponent.pictureUrl} alt={altOpponentImg} title={props.card.nextOpponent.name} style={{width: '15px'}}/>
-            } else {opponentImg = <HelpIcon style={{width: '20px'}}/>}
-        } else {opponentImg = <HelpIcon style={{width: '20px'}}/>}
-    } else {opponentImg = <HelpIcon style={{width: '20px'}}/>}
+                opponentImg = <img src={props.card.nextOpponent.pictureUrl} alt={altOpponentImg} title={props.card.nextOpponent.name} style={{width: '25px'}}/>
+            } else {opponentImg = <HelpIcon style={{width: '25px'}}/>}
+        } else {opponentImg = <HelpIcon style={{width: '25px'}}/>}
+    } else {opponentImg = <HelpIcon style={{width: '25px'}}/>}
 
     
     
@@ -58,18 +58,20 @@ export function BestLineupCard (props) {
     
     return (
 
-        <div style={{width: '110px', height: '270px', marginLeft: '10px', marginRight: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-            <div style={{height: '30px', fontWeight: 600, fontSize: '18px', color: 'rgb(38, 38, 38)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{width: '15%', minWidth: '150px', marginLeft: '2%', marginRight: '2%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            
+            <div style={{padding: '8px', fontWeight: 600, fontSize: '26px', color: 'rgb(38, 38, 38)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             {props.card.isCaptain ? <StarIcon style={{marginRight: '10px'}}/> : ''}{props.position}
             </div>  
-            <div style={{width: '100px', height: '180px'}}>
+            
+            <div style={{width: '90%', minHeight: '66%'}}>
                 {cardImg}
             </div>
-            <div style={{height: '20px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>
                 <span style={{marginRight: '5px'}}>{clubImg}</span> - <span style={{marginLeft: '5px'}}>{opponentImg}</span>
             </div>
-            <div style={{height: '30px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '3px'}}>
-                <span style={{backgroundColor: 'rgb(38, 38, 38)', color: 'white', paddingRight: '8px', paddingLeft: '8px', paddingTop: '3px', paddingBottom: '5px', borderRadius: '8px'}}>{expectedScore.toFixed(0)}</span>
+            <div style={{height: '30px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '12px'}}>
+                <span style={{fontSize: '24px', backgroundColor: 'rgb(38, 38, 38)', color: 'white', paddingRight: '8px', paddingLeft: '8px', paddingTop: '3px', paddingBottom: '5px', borderRadius: '8px'}}>{expectedScore.toFixed(0)}</span>
             </div>
         </div>
 

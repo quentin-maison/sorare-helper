@@ -41,10 +41,10 @@ export function BestLineupSelector (props) {
 
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap', marginLeft: '6%', marginRight: '6%', marginBottom: '20px'}}>
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap', marginLeft: '6%', marginRight: '6%', marginBottom: '45px'}}>
 
-            <Item style={{backgroundColor: 'rgb(25, 118, 210)', color: 'white', marginRight: '25px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Gameweek #{nextGWNumber}</Item>
-            <Item style={{marginRight: '25px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{nextGWStartDate} - {nextGWEndDate}</Item>
+            <Item style={{fontSize: '22px', padding: '12px', backgroundColor: 'rgb(25, 118, 210)', color: 'white', marginRight: '25px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Gameweek #{nextGWNumber}</Item>
+            <Item style={{fontSize: '22px', padding: '12px', marginRight: '25px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{nextGWStartDate} - {nextGWEndDate}</Item>
             <So5RaritySelector handleSo5RarityChange={props.handleSo5RarityChange}/>
             <So5LeagueSelector handleSo5LeagueChange={props.handleSo5LeagueChange}/>
 

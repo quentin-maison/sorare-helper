@@ -14,11 +14,11 @@ import { useSnackbar } from 'notistack';
 export function SearchStatus (props) {
 
     const [managerSearched, setManagerSearched] = useState('')    
-    const searchStatusNoSearch = <Alert severity="info" >Search manager by name to access infos</Alert>
-    const searchStatusManagerNotFound = <Alert severity="error">No match found for '{managerSearched}'</Alert>
+    const searchStatusNoSearch = <Alert severity="info" style={{height: '50px', fontSize: '22px', display: 'flex', alignItems: 'center'}}>Search manager by name to access infos</Alert>
+    const searchStatusManagerNotFound = <Alert severity="error" style={{height: '50px', fontSize: '22px', display: 'flex', alignItems: 'center'}}>No match found for '{managerSearched}'</Alert>
     const searchStatusSearching = (
         <div>
-            <Alert severity="warning">Searching '{managerSearched}'</Alert>
+            <Alert severity="warning" style={{height: '50px', fontSize: '22px', display: 'flex', alignItems: 'center'}}>Searching '{managerSearched}'</Alert>
             <Box sx={{ width: '60%', marginTop: '25px', marginRight: 'auto', marginLeft: 'auto' }}>
                 <Skeleton animation="wave"/>
                 <Skeleton animation="wave"/>
@@ -65,7 +65,7 @@ export function SearchStatus (props) {
 
     return (
 
-        <div id='searchstatus-container' style={{display: 'flex', justifyContent: 'center'}}>
+        <div id='searchstatus-container' style={{display: 'flex', justifyContent: 'center', marginTop: '40px'}}>
             <Stack className='searchstatus' spacing={2} style={{width: '60%', marginTop: '25px'}}>
                 {searchStatus}
             </Stack>

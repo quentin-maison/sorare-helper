@@ -22,11 +22,11 @@ export function CardCarousel (props) {
 
     const responsive = {
         0: { items: 1 },
-        200: { items: 2 },
-        400: { items: 3},
-        600: { items: 4 },
-        800: { items: 5 },
-        1000: { items: 6},
+        250: { items: 2 },
+        500: { items: 3},
+        750: { items: 4 },
+        1000: { items: 5 },
+        1250: { items: 6},
     };        
 
 

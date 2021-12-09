@@ -89,11 +89,11 @@ export function RaritySelector(props) {
         <div style={{color: 'rgb(39, 39, 39, 0.8)', width: '250px'}}>
             <div className='selector-title'>SELECT RARITY</div>
             <FormGroup row={true} className='rarity-selector' style={{display: 'flex', flexDirection: 'column', marginTop: '15px'}}>
-                <FormControlLabel className='rarity-button' control={<CommonSwitch {...labelCommon} onClick={handleCommonChange} size="small" defaultChecked />} label="Common" />
-                <FormControlLabel className='rarity-button' control={<LimitedSwitch {...labelLimited} onClick={handleLimitedChange} size="small" defaultChecked />} label="Limited" />
-                <FormControlLabel className='rarity-button' control={<RareSwitch {...labelRare} onClick={handleRareChange} size="small" defaultChecked />} label="Rare" />
-                <FormControlLabel className='rarity-button' control={<SuperRareSwitch {...labelSuperRare} onClick={handleSuperRareChange} size="small" defaultChecked />} label="Super Rare" />
-                <FormControlLabel className='rarity-button' control={<UniqueSwitch {...labelUnique} onClick={handleUniqueChange} size="small" defaultChecked />} label="Unique" />
+                <FormControlLabel style={{marginBottom: '5px'}} control={<CommonSwitch {...labelCommon} onClick={handleCommonChange} size="small" defaultChecked />} label="Common" />
+                <FormControlLabel style={{marginBottom: '5px'}} control={<LimitedSwitch {...labelLimited} onClick={handleLimitedChange} size="small" defaultChecked />} label="Limited" />
+                <FormControlLabel style={{marginBottom: '5px'}} control={<RareSwitch {...labelRare} onClick={handleRareChange} size="small" defaultChecked />} label="Rare" />
+                <FormControlLabel style={{marginBottom: '5px'}} control={<SuperRareSwitch {...labelSuperRare} onClick={handleSuperRareChange} size="small" defaultChecked />} label="Super Rare" />
+                <FormControlLabel style={{marginBottom: '5px'}} control={<UniqueSwitch {...labelUnique} onClick={handleUniqueChange} size="small" defaultChecked />} label="Unique" />
             </FormGroup>
 
         </div>

@@ -76,13 +76,13 @@ export function Navbar (props) {
     <div className='margin-navbar'>
     <Box id='navbar' sx={{ flexGrow: 1}}>
     <ThemeProvider theme={darkTheme}>
-      <AppBar position="static">
+      <AppBar position="static" style={{paddingTop: '8px', paddingBottom: '6px'}}>
         <Toolbar>
 
 
 
           <Typography
-              variant="h6"
+              variant="h4"
               noWrap
               component="div"
               sx={{ display: { xs: 'none', sm: 'block', marginLeft: '6%' } }}
@@ -94,12 +94,13 @@ export function Navbar (props) {
 
           <Search>
             <form onSubmit={handleSearch}>
-              <SearchIconWrapper>
+              <SearchIconWrapper style={{width: '20px'}}>
                 <button type='submit'>
-                    <SearchIcon/>
+                    <SearchIcon sx={{fontSize: 32}}/>
                 </button>
               </SearchIconWrapper>
               <StyledInputBase
+                style={{fontSize: '20px'}}
                 placeholder="Enter manager name"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={updateInput}
