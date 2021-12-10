@@ -103,7 +103,7 @@ export function HomePage (props) {
     )
   
     return (
-        <div id='homepage' style={{marginTop: '60px'}}>
+        <div id='homepage' style={{paddingTop: '60px'}}>
         <div style={displayAlertSearching}>
             <Alert severity="warning" variant="filled" style={{width: '70%', height: '50px', fontSize: '20px', backgroundColor: 'rgb(237, 108, 2, 0.85)', display: 'flex', alignItems: 'center', marginRight: 'auto', marginLeft: 'auto' }}>
                 Searching '{props.managerSearched}' | Operation can take up to 15 sec.
