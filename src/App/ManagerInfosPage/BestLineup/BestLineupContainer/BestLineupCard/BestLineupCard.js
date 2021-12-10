@@ -71,7 +71,7 @@ export function BestLineupCard (props) {
                 <span style={{marginRight: '5px'}}>{clubImg}</span> - <span style={{marginLeft: '5px'}}>{opponentImg}</span>
             </div>
             <div style={{height: '30px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '12px'}}>
-                <span style={{fontSize: '24px', backgroundColor: 'rgb(38, 38, 38)', color: 'white', paddingRight: '8px', paddingLeft: '8px', paddingTop: '3px', paddingBottom: '5px', borderRadius: '8px'}}>{expectedScore.toFixed(0)}</span>
+                <span style={{fontSize: '24px', fontWeight: 600, backgroundColor: 'rgb(38, 38, 38)', color: 'white', padding: '5px', paddingBottom: '8px', paddingLeft: '10px', paddingRight: '10px', borderRadius: '8px'}}>{expectedScore.toFixed(0)}</span>
             </div>
         </div>
 

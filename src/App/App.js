@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 
 //PAGES
+import {HomePage} from './HomePage/HomePage'
 import {ManagerInfosPage} from './ManagerInfosPage/ManagerInfosPage'
 
 //COMPONENTS
 import {Navbar} from './Navbar/Navbar'
 import {Fetch} from './Fetch/Fetch'
 import {ServerStatus} from './ServerStatus/ServerStatus'
-import {SearchStatus} from './SearchStatus/SearchStatus'
 
 //SUPPORT FUNCTIONS
 import {getEnvironement} from './Fetch/getEnvironment/getEnvironment'
@@ -96,20 +96,28 @@ function App() {
     setSearchStatus(newSearchStatus)
   }
 
-  //DISPLAY SEARCH STATUS & MANAGER INFOS
-  const [displaySearchStatus, setDisplaySearchStatus] = useState({display: 'none'})
+  function goToHomePage () {
+    setSearchStatus('no-search')
+  }
+
+
+  //PAGE TO DISPLAY
+  const [displayHomePage, setDisplayHomePage] = useState({display: 'block'})
   const [displayManagerInfos, setDisplayManagerInfos] = useState({display: 'none'})
   useEffect(
     () => {
 
-      if (searchStatus === 'search-found') {
-        setDisplaySearchStatus({display: 'none'})
-        setDisplayManagerInfos({display: 'block'})
-      } else {
-        setDisplaySearchStatus({display: 'block'})
-        setDisplayManagerInfos({display: 'none'})
+      //HOMEPAGE
+      if (searchStatus === 'no-search') {setDisplayHomePage({display: 'block'})}
+      if (searchStatus === 'searching') {setDisplayHomePage({display: 'block'})}
+      if (searchStatus === 'search-not-found') {setDisplayHomePage({display: 'block'})}
+      if (searchStatus === 'search-found') {setDisplayHomePage({display: 'none'})}
 
-      }
+      //MANAGER INFOS PAGE
+      if (searchStatus === 'no-search') {setDisplayManagerInfos({display: 'none'})}
+      if (searchStatus === 'searching') {setDisplayManagerInfos({display: 'none'})}
+      if (searchStatus === 'search-not-found') {setDisplayManagerInfos({display: 'none'})}
+      if (searchStatus === 'search-found') {setDisplayManagerInfos({display: 'block'})}
 
     }, [searchStatus]
   )
@@ -118,7 +126,8 @@ function App() {
   return (
     <div>
       <Navbar 
-        handleManagerSearch={handleManagerSearch}/>
+        handleManagerSearch={handleManagerSearch}
+        goToHomePage={goToHomePage}/>
       <Fetch
         environment={environment}
         updateGWInfos={updateGWInfos}
@@ -128,24 +137,33 @@ function App() {
         updateManagerInfos={updateManagerInfos}
         updateManagerName={updateManagerName}/>
 
-      <main>
+      <main style={{paddingTop: '62px'}}>
 
-        <div style={displayAlertServer}>
-          <ServerStatus />
-        </div>
-        <div style={displaySearchStatus}>
-          <SearchStatus 
+      <div style={displayAlertServer}>
+        <ServerStatus/>
+      </div>
+
+      <div style={displayHomePage}>
+        <HomePage 
             searchStatus={searchStatus} 
             managerSearched={managerSearched} 
             managerName={managerName} 
-            managerInfos={managerInfos}/>
-        </div>
-        <div style={displayManagerInfos}>
-          <ManagerInfosPage 
+            managerInfos={managerInfos}
+            handleManagerSearch={handleManagerSearch}
+            />
+      </div>
+
+      <div style={displayManagerInfos}>
+        <ManagerInfosPage 
+            searchStatus={searchStatus}
+            managerSearched={managerSearched} 
+            managerName={managerName} 
             managerInfos={managerInfos} 
             managerCards={managerCards} 
             nextGWInfos={nextGWInfos}/>
-        </div>
+      </div>
+
+
         
       </main>
     </div>

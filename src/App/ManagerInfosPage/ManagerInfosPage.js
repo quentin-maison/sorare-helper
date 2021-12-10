@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react'
 
+//SNACKBAR
+import { useSnackbar } from 'notistack';
+
+
 //COMPONENTS
 import {Managertab} from './Managertab/Managertab'
 import { ManagerCards } from './ManagerCards/ManagerCards';
@@ -56,6 +60,28 @@ export function ManagerInfosPage (props) {
 
         }, [props.managerInfos]
     )
+
+
+
+
+    const { enqueueSnackbar } = useSnackbar();
+    const showSnackbar = (text, variant) => {
+        enqueueSnackbar(text, {variant});
+    };
+
+
+    useEffect(
+        () => {
+
+            if (props.searchStatus === 'search-found') {
+                showSnackbar(`Manager '${props.managerName}' found | ${props.managerInfos.cardCounts.total} cards`, 'success')
+                showSnackbar(`Searched term '${props.managerSearched}'`)
+
+            }
+
+        }, [props.managerInfos]
+    )
+
 
     const altLogoManager = `Logo for manager ${props.managerInfos.nickname}`
 

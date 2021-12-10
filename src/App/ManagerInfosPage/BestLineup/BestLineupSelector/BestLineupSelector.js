@@ -27,7 +27,6 @@ export function BestLineupSelector (props) {
                 return
             }
 
-
             setNextGWNumber(props.nextGWInfos.gameWeek)
 
             let dateNextGWStart = new Date(props.nextGWInfos.startDate)

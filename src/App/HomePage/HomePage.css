@@ -1,0 +1,4 @@
+#homepage {
+    background-image: linear-gradient(rgba(250, 250, 250, 1) 50%, rgba(250, 250, 250, 0)), url('../../resources/images/homepage-image.jpg');
+    min-height: 700px;
+}

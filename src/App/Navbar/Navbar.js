@@ -14,6 +14,9 @@ import SearchIcon from '@mui/icons-material/Search';
 //DARK THEME
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+//ICONE
+import IconButton from '@mui/material/IconButton';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 
 //CSS
 import './Navbar.css'
@@ -79,13 +82,24 @@ export function Navbar (props) {
       <AppBar position="static" style={{paddingTop: '8px', paddingBottom: '6px'}}>
         <Toolbar>
 
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={props.goToHomePage}
+            sx={{ mr: 2 }}>
+            <SportsSoccerIcon 
+              style={{minWidth: '45px', minHeight: '45px'}}
+            />
+          </IconButton>
 
 
           <Typography
               variant="h4"
               noWrap
               component="div"
-              sx={{ display: { xs: 'none', sm: 'block', marginLeft: '6%' } }}
+              sx={{ display: { xs: 'none', sm: 'block', marginLeft: '10px' } }}
             >
               SORARE HELPER
           </Typography>

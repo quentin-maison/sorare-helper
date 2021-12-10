@@ -11,27 +11,35 @@ export function getNextGWSlug () {
     let nextGWStart ;
     let nextGWEnd ;
 
+    function thisMondayDate (numberOfDayToAdd) {
+        const today = new Date();
+        return new Date(today.setDate(numberOfDayToAdd + today.getDate() + (((1 - today.getDay()) % 7) || 7)));
+    }
+
+
     if (currentDay < 2.5) {
         //NEXT GW START = next Tuesday
         //NEXT GW END = next Friday
-        nextGWStart = new Date(currentDate.setDate(2 + currentDate.getDate() - currentDate.getDay()));
-        nextGWEnd = new Date(currentDate.setDate(5 + currentDate.getDate() - currentDate.getDay()));
+        nextGWStart = thisMondayDate(1);
+        nextGWEnd = thisMondayDate(4);
     }
 
     if (currentDay >= 2.5 && currentDay < 5.5) {
         //NEWT GW START = next Friday
         //NEXT GW END = Tuesday next week
-        nextGWStart = new Date(currentDate.setDate(5 + currentDate.getDate() - currentDate.getDay()));
-        nextGWEnd = new Date(currentDate.setDate(9 + currentDate.getDate() - currentDate.getDay()));
+        nextGWStart = thisMondayDate(4);
+        nextGWEnd = thisMondayDate(8);
 
     }
 
     if (currentDay >= 5.5) {
         //NEWT GW START = Tuesday next week
         //NEXT GW END = Friday next week
-        nextGWStart = new Date(currentDate.setDate(9 + currentDate.getDate() - currentDate.getDay()));
-        nextGWEnd = new Date(currentDate.setDate(12 + currentDate.getDate() - currentDate.getDay()));
+        nextGWStart = thisMondayDate(8);
+        nextGWEnd = thisMondayDate(11);
+
     }
+
 
     let dateNextGWStart = nextGWStart.getDate()
     let monthNextGWStart = monthNames[nextGWStart.getMonth()]
@@ -45,6 +53,9 @@ export function getNextGWSlug () {
     } else {
         nextGWSlug = `${dateNextGWStart}-${monthNextGWStart}-${dateNextGWEnd}-${monthNextGWEnd}`
     }
+
+    console.log(nextGWSlug)
+
 
     return nextGWSlug
 }
