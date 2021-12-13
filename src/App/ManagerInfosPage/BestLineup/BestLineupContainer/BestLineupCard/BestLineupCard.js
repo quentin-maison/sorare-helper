@@ -4,15 +4,38 @@ import React, {useEffect, useState} from 'react'
 import StarIcon from '@mui/icons-material/Star';
 import HelpIcon from '@mui/icons-material/Help';
 
+import {CardInfosZoom} from '../../../../CardInfosZoom/CardInfosZoom'
+import Popup from 'reactjs-popup';
+
 export function BestLineupCard (props) {
 
+
+
+    const [open, setOpen] = useState(false)
+    function openPopup () {
+        setOpen(true)
+    }
+
+    function closePopup () {
+        setOpen(false)
+    }
+    
+
     if (props.card === undefined || props.card === null) {return (<div></div>);}
+
     
     let cardImg ;
     let altCardImg ;
     if (Object.keys(props.card).includes('pictureUrl')) {
         altCardImg = `Card: ${props.card.name}`
-        cardImg = <img src={props.card.pictureUrl} alt={altCardImg} title={props.card.name} style={{width: '100%'}}/>
+        cardImg = (
+            <div>
+            <Popup open={open} closeOnDocumentClick onClose={closePopup}>
+                <CardInfosZoom card={props.card} closePopup={closePopup}/>
+            </Popup>
+            <img src={props.card.pictureUrl} alt={altCardImg} title={props.card.name} style={{width: '100%'}} onClick={openPopup}/>
+            </div>
+        );
     } else {
         cardImg = (
                 <div style={{height: '100%', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

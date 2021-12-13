@@ -48,6 +48,7 @@ export function ManagerInfosPage (props) {
                 return
             }
             else {
+                if (!Object.keys(props.managerInfos.profile.clubShield).includes('pictureUrl')) {return }
                 setManagerInfosClubPictureUrl(props.managerInfos.profile.clubShield.pictureUrl)
 
                 const creationDate = new Date(props.managerInfos.createdAt)

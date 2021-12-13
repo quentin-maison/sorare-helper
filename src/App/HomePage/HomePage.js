@@ -12,10 +12,13 @@ import Skeleton from '@mui/material/Skeleton';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import CasinoIcon from '@mui/icons-material/Casino';
 
 //CSS
 import './HomePage.css'
+
+import {managerList} from '../ManagerList/ManagerList'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -98,16 +101,25 @@ export function HomePage (props) {
                 setDisplayHomePage({display: 'block'})
             }
 
-
         }, [props.searchStatus]
     )
+
+    function searchRandomManager () {
+        props.handleManagerSearch(managerList[Math.floor(Math.random() * managerList.length)])
+    }
+
   
     return (
         <div id='homepage' style={{paddingTop: '60px'}}>
         <div style={displayAlertSearching}>
-            <Alert severity="warning" variant="filled" style={{width: '70%', height: '50px', fontSize: '20px', backgroundColor: 'rgb(237, 108, 2, 0.85)', display: 'flex', alignItems: 'center', marginRight: 'auto', marginLeft: 'auto' }}>
-                Searching '{props.managerSearched}' | Operation can take up to 15 sec.
-            </Alert>
+
+            <div style={{marginLeft: '6%', display: 'flex', alignItems: 'center'}}>
+
+                <div style={{marginLeft: '6%'}}><CircularProgress /></div>
+                <Alert severity="info" variant="filled" style={{width: '70%', height: '50px', fontSize: '20px', backgroundColor: 'rgb(2, 136, 209, 0.85)', display: 'flex', alignItems: 'center', marginLeft: '20px'}}>
+                    Searching '{props.managerSearched}' | Operation can take up to 15 sec.
+                </Alert>
+            </div>
 
             <Box sx={{ width: '60%', marginTop: '25px', marginRight: 'auto', marginLeft: 'auto' }}>
                 <Skeleton animation="wave"/>
@@ -123,8 +135,10 @@ export function HomePage (props) {
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap'}}>
                 <div style={{width: '50%', minWidth: '400px', marginBottom: '40px'}}>
                     <h2 style={{color: 'rgb(2, 163, 136)', fontSize: '44px', fontWeight: 600, paddingTop: '8px', paddingBottom: '8px', marginBottom: '15px'}}>Welcome to Sorare Helper!</h2>
-                    <p style={{fontSize: '22px', marginBottom: '40px', lineHeight: 1.2, textAlign: 'justify'}}>Sorare Helper assists sorare manager in their line-up build each and every gameweek by assessing their key players and suggesting them their expected top-scoring team.</p>
-                    <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '60%', backgroundColor: 'rgb(2, 163, 136)', margin: 'auto', borderRadius: '35px', paddingTop: '10px', paddingBottom: '10px'}}>
+                    <p style={{fontSize: '22px', marginBottom: '40px', lineHeight: 1.2, textAlign: 'justify'}}>Sorare Helper assists sorare managers in their line-up build each and every gameweek by assessing their key players and suggesting them their expected top-scoring team.</p>
+
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '60%', backgroundColor: 'rgb(2, 163, 136)', borderRadius: '35px', paddingTop: '10px', paddingBottom: '10px'}}>
                         <Search style={{width: '100%'}}>
                             <form onSubmit={handleSearch} style={{width: '100%'}}>
                                 <SearchIconWrapper style={{width: '20px'}}>
@@ -142,6 +156,12 @@ export function HomePage (props) {
                             </form>
                         </Search>
                     </div>
+                    <div style={{marginLeft: '20px', fontSize: '24px'}}>
+                        <CasinoIcon onClick={searchRandomManager} sx={{fontSize: 42, color: 'rgb(2, 163, 136)',  padding: '6px', borderRadius: '100%', "&:hover": {backgroundColor: 'rgb(2, 163, 136, 0.05)'}}}/>
+                    </div>
+
+                    </div>
+                 
                 </div>
             </div>
 
@@ -153,4 +173,3 @@ export function HomePage (props) {
         </div>
     );
 }
-

@@ -74,6 +74,7 @@ function App() {
   const [managerSearched, setManagerSearched] = useState('')
   function handleManagerSearch(managerName) {
     setManagerSearched(managerName)
+    window.scrollTo(0, 0);
   }
 
   const [managerName, setManagerName] = useState('')
@@ -97,6 +98,7 @@ function App() {
   }
 
   function goToHomePage () {
+    window.scrollTo(0, 0);
     setSearchStatus('no-search')
   }
 

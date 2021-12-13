@@ -80,7 +80,7 @@ export function BestLineupDetails (props) {
 
     
     return (
-        <div style={{marginTop: '24px', marginLeft: '6%',marginRight: '6%'}}>
+        <div id='best-lineup-table' style={{marginTop: '24px', marginLeft: '6%',marginRight: '6%'}}>
             <Paper elevation={4} style={{borderTopLeftRadius: '16px', borderTopRightRadius:'16px', borderBottomLeftRadius: '16px', borderBottomRightRadius:'16px'}}>
             <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">

@@ -12,31 +12,42 @@ export function getNextGWSlug () {
     let nextGWEnd ;
 
     function thisMondayDate (numberOfDayToAdd) {
-        const today = new Date();
-        return new Date(today.setDate(numberOfDayToAdd + today.getDate() + (((1 - today.getDay()) % 7) || 7)));
+        const today = new Date(Date.now());
+
+        //DIMANCHE OU LUNDI
+        if (today.getDay() === 0) {return  today.setDate(today.getDate() + 1 + numberOfDayToAdd)}
+        if (today.getDay() === 1) {return  today.setDate(today.getDate() + 0 + numberOfDayToAdd)}
+
+        //A PARTIR DE MARDI
+        if (today.getDay() === 2) {return  today.setDate(today.getDate() - 1 + numberOfDayToAdd)}
+        if (today.getDay() === 3) {return  today.setDate(today.getDate() - 2 + numberOfDayToAdd)}
+        if (today.getDay() === 4) {return  today.setDate(today.getDate() - 3 + numberOfDayToAdd)}
+        if (today.getDay() === 5) {return  today.setDate(today.getDate() - 4 + numberOfDayToAdd)}
+        if (today.getDay() === 6) {return  today.setDate(today.getDate() - 5 + numberOfDayToAdd)}
+
     }
 
 
     if (currentDay < 2.5) {
         //NEXT GW START = next Tuesday
         //NEXT GW END = next Friday
-        nextGWStart = thisMondayDate(1);
-        nextGWEnd = thisMondayDate(4);
+        nextGWStart = new Date(thisMondayDate(1));
+        nextGWEnd = new Date(thisMondayDate(4));
     }
 
     if (currentDay >= 2.5 && currentDay < 5.5) {
         //NEWT GW START = next Friday
         //NEXT GW END = Tuesday next week
-        nextGWStart = thisMondayDate(4);
-        nextGWEnd = thisMondayDate(8);
+        nextGWStart = new Date(thisMondayDate(4));
+        nextGWEnd = new Date(thisMondayDate(8));
 
     }
 
     if (currentDay >= 5.5) {
         //NEWT GW START = Tuesday next week
         //NEXT GW END = Friday next week
-        nextGWStart = thisMondayDate(8);
-        nextGWEnd = thisMondayDate(11);
+        nextGWStart = new Date(thisMondayDate(8));
+        nextGWEnd = new Date(thisMondayDate(11));
 
     }
 
@@ -53,9 +64,6 @@ export function getNextGWSlug () {
     } else {
         nextGWSlug = `${dateNextGWStart}-${monthNextGWStart}-${dateNextGWEnd}-${monthNextGWEnd}`
     }
-
-    console.log(nextGWSlug)
-
 
     return nextGWSlug
 }

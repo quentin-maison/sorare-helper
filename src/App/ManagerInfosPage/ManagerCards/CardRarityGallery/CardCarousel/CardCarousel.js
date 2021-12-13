@@ -5,6 +5,9 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 //COMPONENTS
 import {GalleryCard} from './GalleryCard/GalleryCard'
 
+//CSS
+import './CardCarousel.css'
+
 
 export function CardCarousel (props) {
     
@@ -22,22 +25,21 @@ export function CardCarousel (props) {
 
     const responsive = {
         0: { items: 1 },
-        250: { items: 2 },
-        500: { items: 3},
-        750: { items: 4 },
-        1000: { items: 5 },
-        1250: { items: 6},
+        500: { items: 2 },
+        1000: { items: 3},
+        1500: { items: 4 },
+        2000: { items: 5 },
+        2500: { items: 6},
     };        
 
 
     return (
-
         <AliceCarousel
             mouseTracking
             items={cardsToDisplay}
             responsive={responsive}
             controlsStrategy="alternate"
             disableDotsControls={true}
-        /> 
+        />
     );
   }
