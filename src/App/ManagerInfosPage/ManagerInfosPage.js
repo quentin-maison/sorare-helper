@@ -48,6 +48,8 @@ export function ManagerInfosPage (props) {
                 return
             }
             else {
+                if (props.managerInfos.profile.clubShield === null) {return }
+                if (props.managerInfos.profile.clubShield === undefined) {return }
                 if (!Object.keys(props.managerInfos.profile.clubShield).includes('pictureUrl')) {return }
                 setManagerInfosClubPictureUrl(props.managerInfos.profile.clubShield.pictureUrl)
 
@@ -61,8 +63,6 @@ export function ManagerInfosPage (props) {
 
         }, [props.managerInfos]
     )
-
-
 
 
     const { enqueueSnackbar } = useSnackbar();

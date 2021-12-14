@@ -1,0 +1,7 @@
+.clickable-element {
+    cursor: pointer;
+}
+
+.clickable-card:hover {
+    box-shadow: 10px 5px 5px rgb(38, 38, 38, 0.2);
+}

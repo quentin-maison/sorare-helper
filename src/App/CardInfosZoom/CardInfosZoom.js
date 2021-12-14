@@ -15,7 +15,7 @@ export function CardInfosZoom (props) {
 
     return (
         <div style={stylePopup}>
-            <div style={{float: 'right', marginRight: '10px', marginTop: '10px', color: 'white'}}><CloseIcon onClick={props.closePopup}/></div>
+            <div className='clickable-element' style={{float: 'right', marginRight: '10px', marginTop: '10px', color: 'white'}}><CloseIcon onClick={props.closePopup}/></div>
 
             <div style={{height: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexWrap: 'wrap'}}>
                 

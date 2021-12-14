@@ -25,7 +25,7 @@ export function GalleryCard (props) {
             <Popup open={open} closeOnDocumentClick onClose={closePopup}>
                 <CardInfosZoom card={props.cardInfos} closePopup={closePopup}/>
             </Popup>
-            <img src={props.cardInfos.pictureUrl} alt={altCardImg} title={props.cardInfos.name} style={{width: '100%'}} onClick={openPopup}/>
+            <img className='clickable-element clickable-card' src={props.cardInfos.pictureUrl} alt={altCardImg} title={props.cardInfos.name} style={{width: '100%'}} onClick={openPopup}/>
         </div>
     );
 }

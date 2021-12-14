@@ -13,6 +13,8 @@ import {ServerStatus} from './ServerStatus/ServerStatus'
 import {getEnvironement} from './Fetch/getEnvironment/getEnvironment'
 import {urlPOST} from './Fetch/urlsToFetch'
 
+//CSS
+import './App.css'
 
 
 function App() {

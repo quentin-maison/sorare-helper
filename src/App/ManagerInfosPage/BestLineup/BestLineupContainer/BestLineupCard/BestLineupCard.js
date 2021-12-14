@@ -33,7 +33,7 @@ export function BestLineupCard (props) {
             <Popup open={open} closeOnDocumentClick onClose={closePopup}>
                 <CardInfosZoom card={props.card} closePopup={closePopup}/>
             </Popup>
-            <img src={props.card.pictureUrl} alt={altCardImg} title={props.card.name} style={{width: '100%'}} onClick={openPopup}/>
+            <img className='clickable-element clickable-card' src={props.card.pictureUrl} alt={altCardImg} title={props.card.name} style={{width: '100%'}} onClick={openPopup}/>
             </div>
         );
     } else {

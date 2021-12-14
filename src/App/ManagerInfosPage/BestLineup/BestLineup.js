@@ -65,10 +65,25 @@ export function BestLineup (props) {
                 }
             )
 
+            //FILTER IF DNP
+            const filteringDNP = noGameFilteredCards.filter(
+                (card) => {
+                    let DNPCount = 0;
+                    for (let scores of card.lastScores) {
+                        if (card.lastScores.indexOf(scores) > 4) {} else {
+                            if (scores.score === null) {DNPCount++}
+                            if (scores.score === undefined) {DNPCount++}
+                            if (scores.score === 0) {DNPCount++}
+                        }
+                    }
+                    if (DNPCount > 2) {return false} else {return true}
+                }
+            )
+
             //FILTER PLAYER DOUBLONS
-            noGameFilteredCards.sort((cardA, cardB) => cardB.expectedScore - cardA.expectedScore)
+            filteringDNP.sort((cardA, cardB) => cardB.expectedScore - cardA.expectedScore)
             let playerNameArray = [];
-            const noDoublonsEligibleCards = noGameFilteredCards.filter(
+            const noDoublonsEligibleCards = filteringDNP.filter(
                 (card) => {
                     if (playerNameArray.includes(card.player.displayName)) {
                         return false
