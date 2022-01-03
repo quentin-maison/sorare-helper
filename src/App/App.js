@@ -6,12 +6,17 @@ import {ManagerInfosPage} from './ManagerInfosPage/ManagerInfosPage'
 
 //COMPONENTS
 import {Navbar} from './Navbar/Navbar'
-import {Fetch} from './Fetch/Fetch'
 import {ServerStatus} from './ServerStatus/ServerStatus'
+import {Fetch2} from './Fetch/Fecth2/Fetch2'
+
 
 //SUPPORT FUNCTIONS
 import {getEnvironement} from './Fetch/getEnvironment/getEnvironment'
 import {urlPOST} from './Fetch/urlsToFetch'
+
+//SNACKBAR
+import { useSnackbar } from 'notistack';
+
 
 //CSS
 import './App.css'
@@ -21,7 +26,6 @@ function App() {
 
   //ENVIRONMENT
   const environment = getEnvironement()
-
 
   //SERVER STATUS
   const [serverStatus, setServerStatus] = useState()
@@ -58,7 +62,7 @@ function App() {
         setDisplayAlertServer({display: 'none'})
       }
       if (serverStatus === 'not-responding') {
-        setDisplayAlertServer({display: 'block'})
+        setDisplayAlertServer({display: 'block', backgroundColor: 'rgb(250, 250, 250)', paddingTop: '30px'})
       }
 
 
@@ -96,6 +100,7 @@ function App() {
 
   const [searchStatus, setSearchStatus] = useState('no-search')
   function updateSearchStatus (newSearchStatus) {
+    if (newSearchStatus === "") {setSearchStatus('no-search')}
     setSearchStatus(newSearchStatus)
   }
 
@@ -103,6 +108,20 @@ function App() {
     window.scrollTo(0, 0);
     setSearchStatus('no-search')
   }
+
+  //FETCH STATUS
+  const [managerCardsLength, setManagerCardsLength] = useState(0)    
+  function updateManagerCardsLength (newValue) {
+    setManagerCardsLength(newValue)
+  }
+
+  const [managerCardsRetrieved, setManagerCardsRetrieved] = useState(0)
+  function updateManagerCardsRetrieved (newValue) {
+    setManagerCardsRetrieved(newValue)
+  }
+
+
+
 
 
   //PAGE TO DISPLAY
@@ -127,19 +146,45 @@ function App() {
   )
 
 
+  //SNACKBAR
+  const { enqueueSnackbar } = useSnackbar();
+  const showSnackbar = (text, variant) => {
+      enqueueSnackbar(text, {variant});
+  };
+
+  useEffect(
+    () => {
+
+        if (searchStatus === 'search-found') {
+            showSnackbar(`Manager '${managerName}' found | ${managerInfos.cardCounts.total} cards`, 'success')
+            showSnackbar(`Searched term '${managerSearched}'`)
+
+        }
+
+    }, [managerCards]
+)
+
+
+
+
+
   return (
     <div>
       <Navbar 
         handleManagerSearch={handleManagerSearch}
         goToHomePage={goToHomePage}/>
-      <Fetch
+
+      <Fetch2
         environment={environment}
         updateGWInfos={updateGWInfos}
         managerSearched={managerSearched} 
         updateSearchStatus={updateSearchStatus} 
         updateManagerCards={updateManagerCards}
         updateManagerInfos={updateManagerInfos}
-        updateManagerName={updateManagerName}/>
+        updateManagerName={updateManagerName}
+        updateManagerCardsLength={updateManagerCardsLength}
+        updateManagerCardsRetrieved={updateManagerCardsRetrieved}
+        />
 
       <main style={{paddingTop: '62px'}}>
 
@@ -154,6 +199,8 @@ function App() {
             managerName={managerName} 
             managerInfos={managerInfos}
             handleManagerSearch={handleManagerSearch}
+            managerCardsLength={managerCardsLength}
+            managerCardsRetrieved={managerCardsRetrieved}
             />
       </div>
 

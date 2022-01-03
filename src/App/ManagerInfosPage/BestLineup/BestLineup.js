@@ -10,7 +10,6 @@ import {addTeamCaptain}from './support-functions/addTeamCaptain'
 import {BestLineupSelector} from './BestLineupSelector/BestLineupSelector'
 import {BestLineupContainer} from './BestLineupContainer/BestLineupContainer'
 import {BestLineupDetails} from './BestLineupDetails/BestLineupDetails'
-import { createDecipheriv } from 'crypto'
 
 
 export function BestLineup (props) {
@@ -158,7 +157,15 @@ export function BestLineup (props) {
     //DISPLAY LINEUP DETAILS
     const [displayLineupDetails, setDisplayLineUpDetails] = useState(false)
     function handleDisplayLineupDetails () {
+
         setDisplayLineUpDetails(!displayLineupDetails)
+        if (!displayLineupDetails) {
+            setTimeout(
+                () => {
+                    window.scrollTo(0, 2000);
+                }, 0
+            )
+        }
     }
 
 

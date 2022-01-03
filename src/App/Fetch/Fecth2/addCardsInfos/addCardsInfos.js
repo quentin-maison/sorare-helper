@@ -73,7 +73,7 @@ function addLastScores(cardsArray) {
         for (let gameStats of card.player.gameStats) {
             if (checkGameStatsFormat(gameStats)) {
                 //ON PUSH LE BON CODE
-                card.lastScores.push({score: gameStats.so5Score.score, gameWeek: gameStats.so5Score.playerGameStats.game.so5Fixture.gameWeek})
+                card.lastScores.push({score: gameStats.so5Score.score, gameWeek: gameStats.game.so5Fixture.gameWeek})
             } else {
                 //ON PUSH RIEN
                 card.lastScores.push({score: null, gameWeek: null})
@@ -82,7 +82,6 @@ function addLastScores(cardsArray) {
 
         addAverageScore(card)
     }
-
     return cardsArray
 }
 
@@ -94,14 +93,13 @@ function checkGameStatsFormat (gameStats) {
     if (gameStats.so5Score === null || gameStats.so5Score === undefined) {return false}
     if (!Object.keys(gameStats.so5Score).includes('score')) {return false}
 
+
     //CHECK GAMEWEEK NUMBER
-    if (!Object.keys(gameStats).includes('so5Score')) {return false}
-    if (!Object.keys(gameStats.so5Score).includes('playerGameStats')) {return false}
-    if (!Object.keys(gameStats.so5Score.playerGameStats).includes('game')) {return false}
-    if (gameStats.so5Score.playerGameStats.game === null || gameStats.so5Score.playerGameStats.game === undefined) {return false}
-    if (!Object.keys(gameStats.so5Score.playerGameStats.game).includes('so5Fixture')) {return false}
-    if (gameStats.so5Score.playerGameStats.game.so5Fixture === null || gameStats.so5Score.playerGameStats.game.so5Fixture === undefined) {return false}
-    if (!Object.keys(gameStats.so5Score.playerGameStats.game.so5Fixture).includes('gameWeek')) {return false}
+    if (!Object.keys(gameStats).includes('game')) {return false}
+    if (!Object.keys(gameStats.game).includes('so5Fixture')) {return false}
+    if (gameStats.game.so5Fixture === null || gameStats.game.so5Fixture === undefined) {return false}
+    if (!Object.keys(gameStats.game.so5Fixture).includes('gameWeek')) {return false}
+    if (gameStats.game.so5Fixture.gameWeek === null || gameStats.game.so5Fixture.gameWeek === undefined) {return false}
 
     return true
 }

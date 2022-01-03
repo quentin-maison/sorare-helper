@@ -1,0 +1,6 @@
+export function queryManagerCards(managerSlug, lastCursor = '') {
+
+    const query = `{\n  user(slug: "${managerSlug}") {\n    slug\n    nickname\n    createdAt\n    profile {clubShield {pictureUrl}}\n    cardCounts {common, limited, rare, superRare, unique, total}\n    paginatedCards(first: 50, after: "${lastCursor}") { \n      edges {cursor}\n      nodes {\n      age\n      name\n      power\n      rarity\n      position\n      pictureUrl\n      u23Eligible\n      player {\n        displayName\n        gameStats(last: 40) {so5Score {score},  game {so5Fixture {gameWeek}}}\n        \n        activeClub {\n          name, slug, pictureUrl, \n          domesticLeague {slug}\n          upcomingGames(first: 1) {\n            date\n            awayTeam {...on Club {name, slug, pictureUrl} ...on NationalTeam {name, slug, pictureUrl}}\n            homeTeam {...on Club {name, slug, pictureUrl} ...on NationalTeam {name, slug, pictureUrl}}\n          }\n        }\n      \t}\n    \t}\n    }\n  }\n}`
+    
+    return query
+}

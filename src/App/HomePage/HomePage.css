@@ -2,3 +2,7 @@
     background-image: linear-gradient(rgba(250, 250, 250, 1) 50%, rgba(250, 250, 250, 0)), url('../../resources/images/homepage-image.jpg');
     min-height: 700px;
 }
+
+#homepage .random-search:hover {
+    background-color: rgb(2, 163, 136, 0.05);
+}

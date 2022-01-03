@@ -5,6 +5,7 @@ import { addCardsInfos } from './addCardsInfos/addCardsInfos'
 
 //QUERY
 import {queryManagerData} from './queryManagerData'
+import {getLastCursor} from './getLastCursor/getLastCursor'
 
 //RETRIEVE GW SLUGS
 import {getNextGWSlug} from './getGWSlugs/getGWSlugs'
@@ -41,7 +42,6 @@ export function Fetch (props) {
                             
                             let fetchResponse = responseJSON.data.so5Fixture ;
                             fetchResponse.gameWeekSlug = GWSlug ;
-                                                        
                             props.updateGWInfos(fetchResponse)
                         } else {
                         }
@@ -177,11 +177,7 @@ export function Fetch (props) {
             if (fetchSuccessful) {
                 props.updateSearchStatus('search-found')
 
-                if (Object.keys(fetchResponse).includes('cards')) {
-                    const managerCards = fetchResponse.cards
-                    props.updateManagerCards(addCardsInfos(managerCards))
-                }
-
+                //GET MANAGER INFOS
                 if (Object.keys(fetchResponse).includes('profile') && Object.keys(fetchResponse).includes('cardCounts')) {
                     const managerInfos = {}
                     managerInfos.profile = fetchResponse.profile
@@ -190,6 +186,55 @@ export function Fetch (props) {
                     managerInfos.createdAt = fetchResponse.createdAt
 
                     props.updateManagerInfos(managerInfos)
+                }
+
+
+                if (Object.keys(fetchResponse).includes('paginatedCards')) {
+
+                    const managerCards = fetchResponse.paginatedCards.nodes
+                    const cardCounts = fetchResponse.cardCounts.total
+                    const fetchCount = Math.floor(cardCounts/50)+1
+
+                    if (fetchCount <= 1) {return}
+
+                    const lastCursors = []
+                    lastCursors.push(getLastCursor(fetchResponse))
+
+                    for (let i = 0; i < fetchCount-1; i++) {
+
+                        console.log('new fetch')
+                        console.log(lastCursors)
+
+                        const urlToFetch = urlPOST(props.environment)
+
+
+                        const myHeaders = new Headers();
+                        myHeaders.append("Content-Type", "application/json");
+                        const query = queryManagerData(managerSlug, lastCursors[i])
+                        const body = {"variables": {}, "query": query}
+                        const request = {method: 'POST', headers: myHeaders, body: JSON.stringify(body)}
+                
+                        fetch(urlToFetch, request)
+                        .then((response) => response.json())
+                        .then((responseJSON) => {
+                            if (responseJSON !== undefined && responseJSON !== null) {
+                                if (Object.keys(responseJSON).includes('data')) {
+                                    if (Object.keys(responseJSON.data).includes('user')) {
+                                        lastCursors.push(getLastCursor(responseJSON.data.user))
+                                    } else {
+
+                                    }
+                                } else {
+                                }
+                            } else {
+                            }
+                        })    
+                        .catch((error) => {
+                        })
+
+                    }
+
+                    /*props.updateManagerCards(addCardsInfos(managerCards))*/
                 }
             
             }

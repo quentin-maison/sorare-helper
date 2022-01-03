@@ -8,6 +8,9 @@ import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 
+//MANAGER LIST
+import {managerList} from './managerList/managerList'
+
 //ICONE
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -17,8 +20,6 @@ import CasinoIcon from '@mui/icons-material/Casino';
 
 //CSS
 import './HomePage.css'
-
-import {managerList} from '../ManagerList/ManagerList'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -104,8 +105,10 @@ export function HomePage (props) {
         }, [props.searchStatus]
     )
 
+    
     function searchRandomManager () {
-        props.handleManagerSearch(managerList[Math.floor(Math.random() * managerList.length)])
+        const randomIndex = Math.floor(Math.random() * managerList.length)
+        props.handleManagerSearch(managerList[randomIndex])
     }
 
   
@@ -116,8 +119,9 @@ export function HomePage (props) {
             <div style={{marginLeft: '6%', display: 'flex', alignItems: 'center'}}>
 
                 <div style={{marginLeft: '6%'}}><CircularProgress /></div>
-                <Alert severity="info" variant="filled" style={{width: '70%', height: '50px', fontSize: '20px', backgroundColor: 'rgb(2, 136, 209, 0.85)', display: 'flex', alignItems: 'center', marginLeft: '20px'}}>
-                    Searching '{props.managerSearched}' | Operation can take up to 15 sec.
+                <Alert severity="info" variant="filled" style={{width: '70%', fontSize: '20px', backgroundColor: 'rgb(2, 136, 209, 0.85)', display: 'flex', alignItems: 'center', marginLeft: '20px'}}>
+                    <div>Searching '{props.managerSearched}' | Operation may take some time</div>
+                    <div style={{fontSize: '12px'}}>Cards {props.managerCardsRetrieved} of {props.managerCardsLength}</div>
                 </Alert>
             </div>
 
@@ -133,12 +137,12 @@ export function HomePage (props) {
 
         <div style={displayHomePage}>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap'}}>
-                <div style={{width: '50%', minWidth: '400px', marginBottom: '40px'}}>
-                    <h2 style={{color: 'rgb(2, 163, 136)', fontSize: '44px', fontWeight: 600, paddingTop: '8px', paddingBottom: '8px', marginBottom: '15px'}}>Welcome to Sorare Helper!</h2>
-                    <p style={{fontSize: '22px', marginBottom: '40px', lineHeight: 1.2, textAlign: 'justify'}}>Sorare Helper assists sorare managers in their line-up build each and every gameweek by assessing their key players and suggesting them their expected top-scoring team.</p>
+                <div style={{width: '50%', minWidth: '200px', marginBottom: '40px'}}>
+                    <h2 style={{color: 'rgb(2, 163, 136)', fontSize: '44px', fontWeight: 600, paddingTop: '8px', paddingBottom: '8px', marginBottom: '15px', textAlign: 'center'}}>Welcome to Sorare Helper!</h2>
+                    <p style={{fontSize: '22px', marginBottom: '40px', lineHeight: 1.2, textAlign: 'center'}}>Sorare Helper assists sorare managers in their line-up build each and every gameweek by assessing their key players and suggesting them their expected top-scoring team.</p>
 
-                    <div style={{display: 'flex', alignItems: 'center'}}>
-                    <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '60%', backgroundColor: 'rgb(2, 163, 136)', borderRadius: '35px', paddingTop: '10px', paddingBottom: '10px'}}>
+                    <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '60%', backgroundColor: 'rgb(2, 163, 136)', borderRadius: '35px', paddingTop: '10px', paddingBottom: '10px', paddingRight: '10px', paddingLeft: '10px'}}>
                         <Search style={{width: '100%'}}>
                             <form onSubmit={handleSearch} style={{width: '100%'}}>
                                 <SearchIconWrapper style={{width: '20px'}}>
@@ -156,9 +160,17 @@ export function HomePage (props) {
                             </form>
                         </Search>
                     </div>
-                    <div style={{marginLeft: '20px', fontSize: '24px'}}>
-                        <CasinoIcon onClick={searchRandomManager} sx={{fontSize: 42, color: 'rgb(2, 163, 136)',  padding: '6px', borderRadius: '100%', "&:hover": {backgroundColor: 'rgb(2, 163, 136, 0.05)'}}}/>
+
+                    <div 
+                        style={{
+                            marginTop: '8px', color: 'rgb(2, 163, 136)', textDecoration: 'underline', display: 'flex', alignItems: 'center',
+                            padding: '10px', borderRadius: '20px', paddingLeft: '20px', paddingRight: '20px' }}
+                        className='clickable-element random-search' 
+                        onClick={searchRandomManager}>
+                        <CasinoIcon />
+                        <span style={{marginLeft: '8px'}}>No manager name? Try a random search!</span>
                     </div>
+
 
                     </div>
                  

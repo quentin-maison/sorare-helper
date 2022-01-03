@@ -29,8 +29,8 @@ export function CardInfosZoom (props) {
                     </div>
 
                     <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginTop: '60px'}}>
-                        <div><img alt={props.card.team.name} src={props.card.team.pictureUrl} style={{width: '40px'}}/></div>
-                        <div style={{fontSize: '24px', color: 'rgb(230, 230, 230)', marginLeft: '20px'}}>{props.card.team.name}</div>
+                        <div><img alt={props.card.currentTeam.name} src={props.card.currentTeam.pictureUrl} style={{width: '40px'}}/></div>
+                        <div style={{fontSize: '24px', color: 'rgb(230, 230, 230)', marginLeft: '20px'}}>{props.card.currentTeam.name}</div>
                     </div>
 
                     <div style={{marginTop: '60px'}}>
