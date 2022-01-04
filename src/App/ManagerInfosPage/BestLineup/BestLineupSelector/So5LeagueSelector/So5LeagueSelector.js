@@ -16,7 +16,7 @@ export function So5LeagueSelector (props) {
     }
     
     return (
-        <div style={{color: 'rgb(39, 39, 39, 0.8)'}}>
+        <div style={{color: 'rgb(39, 39, 39, 0.8)', marginBottom: '10px'}}>
             <FormControl style={{marginTop: '15px'}}>
                 <InputLabel id="demo-simple-select-label">League</InputLabel>
                     <Select

@@ -162,7 +162,7 @@ export function BestLineup (props) {
         if (!displayLineupDetails) {
             setTimeout(
                 () => {
-                    window.scrollTo(0, 2000);
+                    window.scrollTo(0, 10000);
                 }, 0
             )
         }

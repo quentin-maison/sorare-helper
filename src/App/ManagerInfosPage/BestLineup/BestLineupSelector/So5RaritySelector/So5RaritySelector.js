@@ -15,7 +15,7 @@ export function So5RaritySelector (props) {
     };
     
     return (
-        <div style={{color: 'rgb(39, 39, 39, 0.8)', marginRight: '25px'}}>
+        <div style={{color: 'rgb(39, 39, 39, 0.8)', marginRight: '25px', marginBottom: '10px'}}>
             <FormControl style={{marginTop: '15px'}}>
                 <InputLabel id="demo-simple-select-label">Rarity</InputLabel>
                     <Select

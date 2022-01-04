@@ -10,7 +10,7 @@ import {CardCarousel} from './CardCarousel/CardCarousel'
 export function CardRarityGallery (props) {
 
     
-    const titleStyle = {color: 'rgb(38, 38, 38)', fontSize: '36px', fontWeight: 600, paddingTop: '15px', marginBottom: '35px', width: '100%', display: 'flex', justifyContent: 'center'}
+    const titleStyle = {color: 'rgb(38, 38, 38)', fontSize: '36px', fontWeight: 600, paddingTop: '15px', marginBottom: '35px', width: '100%', display: 'flex', justifyContent: 'center', textAlign: 'center'}
     const galleryStyle = {paddingTop: '10px', paddingBottom: '60px', marginLeft: '6%', marginRight: '6%'}
 
     const [cardsToDisplay, setCardsToDisplay] = useState([])

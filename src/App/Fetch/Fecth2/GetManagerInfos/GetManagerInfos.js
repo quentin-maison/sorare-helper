@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 
 //SUPPORT FUNCTION
-import { urlGET, urlPOST } from '../../urlsToFetch'
+import { urlPOST } from '../../urlsToFetch'
 import { queryManagerInfos } from './queryManagerInfos'
 
 export function GetManagerInfos (props) {

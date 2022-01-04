@@ -1,0 +1,79 @@
+@media screen and (max-width: 601px) {
+    #card-infos-zoom {
+        background-color: rgb(38, 38, 38, 0.95);
+    }
+
+    #card-infos-zoom .card-details {
+        display: flex;
+        flex-direction: column;
+    }
+    
+
+    #card-infos-zoom .card-image-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #card-infos-zoom .card-image {
+        width: 65%;
+    }
+
+    #card-infos-zoom .card-infos-detailed {
+        width: 100%;
+        margin-left: 0;
+    }
+
+
+
+    /*NAME POSITION CONTAINER*/
+
+    #card-infos-zoom .name-position-container {
+        margin: 0;
+        margin-top: 10px;
+        margin-left: 35px;
+    }
+
+    #card-infos-zoom .player-name {
+        color: white;
+        font-size: 20px;
+    }
+
+    #card-infos-zoom .player-position {
+        color: rgb(200, 200, 200);
+        font-size: 16px;
+        font-style: italic;
+    }
+
+    /*TEAM NAME IMAGE CONTAINER*/
+
+    #card-infos-zoom .team-name-image-container {
+        margin: 0;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-left: 35px;
+    }
+
+    #card-infos-zoom .team-image {
+        width: 40px;
+    }
+
+    #card-infos-zoom .team-name {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+
+    /*LATEST SO5 SCORES CONTAINER*/
+
+    #card-infos-zoom .latest-so5-scores-container {
+        margin-left: 35px;
+    }
+    
+    #card-infos-zoom .latest-so5-scores {
+        display: none;
+    }
+
+}

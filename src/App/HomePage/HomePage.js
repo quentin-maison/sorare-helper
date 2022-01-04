@@ -114,14 +114,15 @@ export function HomePage (props) {
   
     return (
         <div id='homepage' style={{paddingTop: '60px'}}>
-        <div style={displayAlertSearching}>
+        <div className='searching-infos' style={displayAlertSearching}>
 
             <div style={{marginLeft: '6%', display: 'flex', alignItems: 'center'}}>
 
-                <div style={{marginLeft: '6%'}}><CircularProgress /></div>
-                <Alert severity="info" variant="filled" style={{width: '70%', fontSize: '20px', backgroundColor: 'rgb(2, 136, 209, 0.85)', display: 'flex', alignItems: 'center', marginLeft: '20px'}}>
-                    <div>Searching '{props.managerSearched}' | Operation may take some time</div>
-                    <div style={{fontSize: '12px'}}>Cards {props.managerCardsRetrieved} of {props.managerCardsLength}</div>
+                <div className='circular-progress' style={{marginLeft: '6%'}}><CircularProgress /></div>
+                <Alert className='alert-searched-info' severity="info" variant="filled" style={{width: '80%', fontSize: '20px', backgroundColor: 'rgb(2, 136, 209, 0.85)', display: 'flex', alignItems: 'center', marginLeft: '20px'}}>
+                    <div className='manager-searched-info' style={{fontSize: '22px'}}>Searching '{props.managerSearched}'</div>
+                    <div className='operation-searched-info' style={{fontSize: '17px'}}>Operation may take some time</div>
+                    <div className='cards-searched-info' style={{fontSize: '12px'}}>{props.managerCardsRetrieved} cards of {props.managerCardsLength}</div>
                 </Alert>
             </div>
 
@@ -152,7 +153,7 @@ export function HomePage (props) {
                                 </SearchIconWrapper>
                                 <StyledInputBase
                                     style={{fontSize: '20px', color: 'white'}}
-                                    placeholder="Enter manager name"
+                                    placeholder="Search manager"
                                     inputProps={{ 'aria-label': 'search' }}
                                     onChange={updateInput}
                                     value={searchInput}

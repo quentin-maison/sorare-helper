@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 
 //ICONE
 import StarIcon from '@mui/icons-material/Star';
@@ -38,7 +38,7 @@ export function BestLineupCard (props) {
         );
     } else {
         cardImg = (
-                <div style={{height: '100%', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                <div style={{height: '100%', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: 'solid 1px gray', borderRadius: '10px'}}>
                     <HelpIcon />
                     <div style={{textAlign: 'center', marginTop: '20px'}}>No Player Available</div>
                 </div>
@@ -81,19 +81,19 @@ export function BestLineupCard (props) {
     
     return (
 
-        <div style={{width: '15%', minWidth: '150px', marginLeft: '2%', marginRight: '2%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{width: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', marginTop: '10px', marginBottom: '10px'}}>
             
-            <div style={{padding: '8px', fontWeight: 600, fontSize: '26px', color: 'rgb(38, 38, 38)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{width: '100%', fontWeight: 600, fontSize: '26px', color: 'rgb(38, 38, 38)', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>
             {props.card.isCaptain ? <StarIcon style={{marginRight: '10px'}}/> : ''}{props.position}
             </div>  
             
-            <div style={{width: '90%', minHeight: '66%'}}>
+            <div style={{width: '90%', marginTop: '10px', height: '290px'}}>
                 {cardImg}
             </div>
-            <div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', height: '50px'}}>
                 <span style={{marginRight: '5px'}}>{clubImg}</span> - <span style={{marginLeft: '5px'}}>{opponentImg}</span>
             </div>
-            <div style={{height: '30px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '12px'}}>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', marginBottom: '10px'}}>
                 <span style={{fontSize: '24px', fontWeight: 600, backgroundColor: 'rgb(38, 38, 38)', color: 'white', padding: '5px', paddingBottom: '8px', paddingLeft: '10px', paddingRight: '10px', borderRadius: '8px'}}>{expectedScore.toFixed(0)}</span>
             </div>
         </div>

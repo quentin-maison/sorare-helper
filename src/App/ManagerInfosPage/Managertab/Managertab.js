@@ -24,8 +24,8 @@ export function Managertab (props) {
                 exclusive
                 onChange={handleChange}>
                 <ToggleButton disabled value='' style={{width: '6%', backgroundColor: 'rgb(39, 39, 39, 0.05)'}}></ToggleButton>
-                <ToggleButton style={{minWidth: '220px', fontSize: '20px'}} value="manager-cards">CARDS</ToggleButton>
-                <ToggleButton style={{minWidth: '220px', fontSize: '20px'}} value="best-lineup">BEST LINE-UP</ToggleButton>
+                <ToggleButton value="manager-cards" style={{minWidth: '150px'}}>CARDS</ToggleButton>
+                <ToggleButton value="best-lineup" style={{minWidth: '150px'}}>BEST LINE-UP</ToggleButton>
                 <ToggleButton disabled value='' style={{width: '100%', backgroundColor: 'rgb(39, 39, 39, 0.05)'}}></ToggleButton>
             </ToggleButtonGroup>
         </div>

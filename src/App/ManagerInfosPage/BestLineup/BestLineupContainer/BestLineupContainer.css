@@ -1,0 +1,32 @@
+.alert-blu-not-enough-cards {
+    width: 60%;
+    margin: auto;
+    height: 50px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 601px) {
+    #best-lineup-container .team-es-title {
+        font-size: 20px;
+        margin-left: 12px;
+    }
+    #best-lineup-container .team-es-number {
+        font-size: 26px;
+        font-weight: 600;
+    }
+}
+
+#best-lineup-container .team-es-title {
+    font-size: 24px;
+    margin-left: 12px;
+    margin-right: 35px;
+}
+
+#best-lineup-container .team-es-number {
+    font-size: 32px;
+    font-weight: 600;
+}
+

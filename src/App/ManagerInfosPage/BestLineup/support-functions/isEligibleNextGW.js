@@ -1,8 +1,8 @@
 export function isEligibleNextGW (card, nextGWInfos) {
 
+
     const nextGWStartDate = new Date(nextGWInfos.startDate)
     const nextGWEndDate = new Date(nextGWInfos.endDate)
-
 
 
     if (!Object.keys(card).includes('player')) {return false}
@@ -22,12 +22,14 @@ export function isEligibleNextGW (card, nextGWInfos) {
         match.date = new Date(match.date)
     }
 
-    nextCardMatchArray.filter(
+
+    const eligibleNextGW = nextCardMatchArray.filter(
         (match) => {
             if (match.date >= nextGWStartDate && match.date <= nextGWEndDate) {return true} else {return false}
         }
     )
 
-    if (nextCardMatchArray.length > 0) {return true} else {return false}
+
+    if (eligibleNextGW.length > 0) {return true} else {return false}
 
 }

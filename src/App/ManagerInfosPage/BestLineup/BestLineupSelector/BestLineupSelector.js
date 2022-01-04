@@ -40,13 +40,15 @@ export function BestLineupSelector (props) {
 
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'flex-end', flexWrap: 'wrap', marginLeft: '6%', marginRight: '6%', marginBottom: '45px'}}>
-
-            <Item style={{fontSize: '22px', padding: '12px', backgroundColor: 'rgb(25, 118, 210)', color: 'white', marginRight: '25px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Gameweek #{nextGWNumber}</Item>
-            <Item style={{fontSize: '22px', padding: '12px', marginRight: '25px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{nextGWStartDate} - {nextGWEndDate}</Item>
-            <So5RaritySelector handleSo5RarityChange={props.handleSo5RarityChange}/>
-            <So5LeagueSelector handleSo5LeagueChange={props.handleSo5LeagueChange}/>
-
+        <div style={{marginLeft: '6%', marginRight: '6%', marginBottom: '20px', display: 'flex', justifyContent: 'center'}}>
+            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+                <Item style={{fontSize: '18px', padding: '12px', backgroundColor: 'rgb(25, 118, 210)', color: 'white', marginRight: '25px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Gameweek #{nextGWNumber}</Item>
+                <Item style={{fontSize: '18px', padding: '12px', marginRight: '25px', marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>{nextGWStartDate} - {nextGWEndDate}</Item>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginLeft: '10px'}}>
+                <So5RaritySelector handleSo5RarityChange={props.handleSo5RarityChange}/>
+                <So5LeagueSelector handleSo5LeagueChange={props.handleSo5LeagueChange}/>
+            </div>
         </div>
     );
 }

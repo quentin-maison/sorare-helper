@@ -6,3 +6,24 @@
 #homepage .random-search:hover {
     background-color: rgb(2, 163, 136, 0.05);
 }
+
+
+@media screen and (max-width: 601px) {
+    #homepage .circular-progress {
+        display: none;
+        margin: none;
+    }
+    #homepage .alert-searched-info {
+        width: 90%;
+    }
+    #homepage .manager-searched-info {
+        font-size: 12px;
+    }
+    #homepage .operation-searched-info {
+        font-size: 6px;
+    }
+    #homepage .cards-searched-info {
+        font-size: 6px;
+    }
+    
+} 
