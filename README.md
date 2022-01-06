@@ -20,7 +20,7 @@ The company raised 500M€ in september 2021
 - Axios
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)  
 Sorare Helper uses Sorare GraphQL API (https://github.com/sorare/api) through a back-end proxy (using lambda AWS)
 
 
