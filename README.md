@@ -1,6 +1,30 @@
-# Getting Started with Create React App
+# PRESENTATION
+
+### SORARE HELPER - https://sorare-helper.netlify.app/
+Sorare Helper assists sorare managers in their line-up build each and every gameweek by assessing their key players and suggesting them their expected top-scoring team.
+
+### ABOUT SORARE - https://sorare.com/
+Sorare is the world-class football fantasy leader
+The company raised 500M€ in september 2021
+
+
+## STACK
+
+- HTML5
+- CSS3
+- ES6
+- React (v17)
+- TypeScript (v4.5)
+- ESLint, Prettier
+- Material UI, Font awesome
+- Axios
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sorare Helper uses Sorare GraphQL API (https://github.com/sorare/api) through a back-end proxy (using lambda AWS)
+
+
+
 
 ## Available Scripts
 
