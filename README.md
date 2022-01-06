@@ -4,7 +4,7 @@
 Sorare Helper assists sorare managers in their line-up build each and every gameweek by assessing their key players and suggesting them their expected top-scoring team.
 
 ### ABOUT SORARE - https://sorare.com/
-Sorare is the world-class football fantasy leader
+Sorare is the world-class football fantasy leader  
 The company raised 500M€ in september 2021
 
 
