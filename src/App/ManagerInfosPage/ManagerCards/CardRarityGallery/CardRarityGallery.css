@@ -1,0 +1,20 @@
+.gallery-title-rarity {
+    color: rgb(38, 38, 38);
+    font-size: 36px;
+    font-weight: 600;
+    padding-top: 15px;
+    margin-bottom: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+
+}
+
+.gallery-rarity {
+    padding-top: 10px;
+    padding-bottom: 60px;
+    margin-left: 6%;
+    margin-right: 6%;
+}

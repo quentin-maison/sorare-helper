@@ -5,3 +5,10 @@
 .clickable-card:hover {
     box-shadow: 10px 5px 5px rgb(38, 38, 38, 0.2);
 }
+
+/*SERVER STATUS*/
+
+#server-status {
+    background-color: rgb(250, 250, 250);
+    padding-top: 30px;
+}
