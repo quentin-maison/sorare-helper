@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react'
 
+//ICONE
 import CloseIcon from '@mui/icons-material/Close';
+import HelpIcon from '@mui/icons-material/Help';
+
 
 //CSS
 import './CardInfosZoom.css'
@@ -10,18 +13,21 @@ import './LatestScores_0-600.css'
 
 // eslint-disable-next-line
 export function CardInfosZoom (props: any) {
-
-    const size = useWindowSize();
-
-    //STYLE
-
     
+    const size = useWindowSize();
     let windowWidth = 0;
     let windowHeight = 0;
 
     if (size.width !== undefined) {windowWidth = size.width}
     if (size.height !== undefined) {windowHeight = size.height}
 
+    let teamName = 'No Team'
+    if (props.card.currentTeam !== null && props.card.currentTeam !== undefined) {
+        if (props.card.currentTeam.name !== null && props.card.currentTeam.name !== undefined) {
+            teamName = props.card.currentTeam.name
+        }
+    }
+    
     return (
         <div style={{display: 'flex', flexDirection: 'column'}}>
             <div style={{height: `${windowHeight*0.1}px`}}></div>
@@ -29,7 +35,8 @@ export function CardInfosZoom (props: any) {
                 <div className='close-icon'><CloseIcon sx={{fontSize: 35}} onClick={props.closePopup}/></div>
 
                 <div className='card-details'>
-                    <div className='card-image-container'><img className='card-image' alt={props.card.name} src={props.card.pictureUrl}/></div>
+                    <div className='card-image-container'>           
+                        <img className='card-image' alt={props.card.name} src={props.card.pictureUrl}/></div>
                     <div className='card-infos-detailed'>
                         
                         <div className='name-position-container'>
@@ -38,8 +45,14 @@ export function CardInfosZoom (props: any) {
                         </div>
 
                         <div className='team-name-image-container'>
-                            <div><img className='team-image' alt={props.card.currentTeam.name} src={props.card.currentTeam.pictureUrl}/></div>
-                            <div className='team-name'>{props.card.currentTeam.name}</div>
+                            <div>
+                                {
+                                    props.card.currentTeam === undefined ?
+                                    <HelpIcon style={{width: '25px', color: 'white'}}/> :
+                                    <img className='team-image' alt={teamName} src={props.card.currentTeam.pictureUrl}/>
+                                }
+                            </div>
+                            <div className='team-name'>{teamName}</div>
                         </div>
 
                         <div className='latest-so5-scores-container'>
