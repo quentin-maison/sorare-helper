@@ -8,7 +8,7 @@ export function addExpectedScore (cardsArray: Card[]): Card[] {
             card.expectedScore = 0
         } else {
             if (card.power === null || card.averageScore === null) {card.expectedScore = 0}  else {
-                card.expectedScore = card.averageScore * parseInt(card.power, 10)
+                card.expectedScore = card.averageScore * parseInt(card.power.replace('.', ''), 10)/1000
             }  
         }
 

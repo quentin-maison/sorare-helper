@@ -49,11 +49,11 @@ export function BestLineupDetails (props: any) {
     }
 
     function bonusXP (card: Card): string {
-        if (card.rarity === 'common' && card.power !== null) {return `${((parseInt(card.power, 10) - 1) * 100 - 0).toFixed(1)}%`}
-        if (card.rarity === 'limited' && card.power !== null) {return `${((parseInt(card.power, 10) - 1) * 100 - 0).toFixed(1)}%`}
-        if (card.rarity === 'rare' && card.power !== null) {return `${((parseInt(card.power, 10) - 1) * 100 - 0).toFixed(1)}%`}
-        if (card.rarity === 'super_rare' && card.power !== null) {return `${((parseInt(card.power, 10) - 1) * 100 - 20).toFixed(1)}%`}
-        if (card.rarity === 'unique' && card.power !== null) {return `${((parseInt(card.power, 10) - 1) * 100 - 40).toFixed(1)}%`}
+        if (card.rarity === 'common' && card.power !== null) {return `${((parseInt(card.power.replace('.', ''), 10)/1000 - 1) * 100 - 0).toFixed(1)}%`}
+        if (card.rarity === 'limited' && card.power !== null) {return `${((parseInt(card.power.replace('.', ''), 10)/1000 - 1) * 100 - 0).toFixed(1)}%`}
+        if (card.rarity === 'rare' && card.power !== null) {return `${((parseInt(card.power.replace('.', ''), 10)/1000 - 1) * 100 - 0).toFixed(1)}%`}
+        if (card.rarity === 'super_rare' && card.power !== null) {return `${((parseInt(card.power.replace('.', ''), 10)/1000 - 1) * 100 - 20).toFixed(1)}%`}
+        if (card.rarity === 'unique' && card.power !== null) {return `${((parseInt(card.power.replace('.', ''), 10)/1000 - 1) * 100 - 40).toFixed(1)}%`}
         else {return '0%'}
     }
 
