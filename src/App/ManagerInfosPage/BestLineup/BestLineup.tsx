@@ -56,7 +56,7 @@ export function BestLineup (props: any) {
                     if (so5LeagueSelected === 'challenger-europe' && card.challengerEurope) {return true}
                     if (so5LeagueSelected === 'champion-asia' && card.championAsia) {return true}
                     if (so5LeagueSelected === 'champion-america' && card.championAmerica) {return true}
-                    if (u23Eligibility(card)) {return true}
+                    if (so5LeagueSelected === 'u23' && u23Eligibility(card)) {return true}
                     return false
                 }
             )

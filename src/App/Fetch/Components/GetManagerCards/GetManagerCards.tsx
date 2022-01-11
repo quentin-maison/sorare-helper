@@ -52,6 +52,7 @@ export function GetManagerCards (props: any) {
 
         }, [lastFetchLength]
     )
+    
 
     //UPDATE FETCH DETAILS
     useEffect(
@@ -69,7 +70,7 @@ export function GetManagerCards (props: any) {
     
     //FETCH FUNCTION
     function getManagerCards(managerSlug: string, lastCursor: string): void {
-                
+                        
         // eslint-disable-next-line
         const urlToFetch = urlPOST(props.environment)
 
