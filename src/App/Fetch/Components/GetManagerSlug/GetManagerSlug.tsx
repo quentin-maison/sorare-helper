@@ -25,21 +25,30 @@ export function GetManagerSlug (props: any) {
                 if (props.environment === 'production') {return responseJSON}
             })
             .then((responseJSON) => {
-                if (responseJSON !== undefined && responseJSON !== null) {
-                    if (Object.keys(responseJSON).includes('manager')) {
-                        if (Object.keys(responseJSON.manager).includes('Slug')) {
-
-                            props.updateManagerSlug(responseJSON.manager.Slug)
-                            props.updateManagerName(responseJSON.manager.Nickname)
-                        } else {
-                            props.updateSearchStatus('search-not-found')
-                        }
-                    } else {
-                        props.updateSearchStatus('search-not-found')
-                    }
-                } else {
+                
+                
+                if (responseJSON === null || responseJSON === undefined) {
                     props.updateSearchStatus('search-not-found')
+                    return
                 }
+
+                if (!Object.keys(responseJSON).includes('manager') && responseJSON.manager !== null) {
+                    props.updateSearchStatus('search-not-found')
+                    return
+                }
+                
+                if (!Object.keys(responseJSON.manager).includes('Slug') && responseJSON.manager.Slug !== null) {
+                    props.updateSearchStatus('search-not-found')
+                    return
+                }
+                props.updateManagerSlug(responseJSON.manager.Slug)
+
+                if (!Object.keys(responseJSON.manager).includes('Nickname') && responseJSON.manager.Nickname !== null) {
+                    props.updateSearchStatus('search-not-found')
+                    return
+                }
+                props.updateManagerName(responseJSON.manager.Nickname)
+                
             })
             .catch(() => {
                 props.updateSearchStatus('search-not-found')

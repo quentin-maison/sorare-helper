@@ -28,17 +28,21 @@ export function GetNextGWInfos (props: any) {
                 return response.json()
             })
             .then((responseJSON) => {
-                if (responseJSON !== undefined && responseJSON !== null) {
-                    if (Object.keys(responseJSON).includes('data')) {
-                        if (Object.keys(responseJSON.data).includes('so5Fixture')) {
-                            
-                            const fetchResponse = responseJSON.data.so5Fixture ;
-                            fetchResponse.gameWeekSlug = GWSlug ;
-                            props.updateGWInfos(fetchResponse)
+                
+                if (responseJSON === null || responseJSON === undefined) {
+                    return
+                }
 
-                        } 
-                    } 
-                } 
+                if (!Object.keys(responseJSON).includes('data') && responseJSON.data !== null) {
+                    return
+                }
+
+                if (!Object.keys(responseJSON.data).includes('so5Fixture') && responseJSON.data.so5Fixture !== null) {
+                    return
+                }
+
+                props.updateGWInfos(responseJSON.data.so5Fixture)
+
             })
             .catch((error) => {
                 console.log(error)

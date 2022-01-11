@@ -13,58 +13,63 @@ export function GetManagerCards (props: any) {
 
     const [managerCards, setManagerCards] = useState<Card[]>([])
     const [lastCursor, setLastCursor] = useState<string>('')
+    const [lastFetchLength, setLastFetchLength] = useState(-1)
 
-    //1ER FETCH
+    //LAUNCH FETCH REQUEST
     useEffect(
         () => {
 
-            setManagerCards([])
-            setLastCursor('')
-            
-            if (props.managerInfos.length === 0) {return}
-            if (props.managerInfos.cardCounts.total === managerCards.length) {return}
-            getManagerCards(props.managerSlug, lastCursor)
-            props.updateManagerCardsLength(props.managerInfos.cardCounts.total)
+            if (props.managerSlug !== null && props.managerSlug !== undefined && props.managerSlug !== '') {
+                setManagerCards([])
+                setLastCursor('')
+                setLastFetchLength(-1)
+                getManagerCards(props.managerSlug, '')
+            }
 
         }, [props.managerInfos]
     )
 
-    //FETCHS SUIVANTS
+    //FOLLOWING FETCHES
     useEffect(
         () => {
 
-            if (props.managerInfos.length === 0) {return}
-            if (props.managerInfos.cardCounts.total === managerCards.length) {return}
-
-            getManagerCards(props.managerSlug, lastCursor)
+            if (lastFetchLength === 50 && props.managerSlug !== null && props.managerSlug !== undefined && props.managerSlug !== '') {
+                getManagerCards(props.managerSlug, lastCursor)
+            }
 
         }, [lastCursor]
     )
 
-    //UPDATE MANAGERCARDS
+
+    //UPDATE CARDS (determine last fetch)
     useEffect(
         () => {
 
-            props.updateManagerCardsRetrieved(managerCards.length)
-
-            if (props.managerInfos.length === 0) {return}
-
-            if (props.managerInfos.cardCounts.total === managerCards.length) {
+            if (lastFetchLength < 50 && lastFetchLength !== -1) {
                 props.updateSearchStatus('search-found')
                 props.updateManagerCards(addCardsInfos(managerCards))
             }
 
+        }, [lastFetchLength]
+    )
+
+    //UPDATE FETCH DETAILS
+    useEffect(
+        () => {
+            props.updateManagerCardsRetrieved(managerCards.length)
         }, [managerCards]
     )
 
+    useEffect(
+        () => {
+            props.updateManagerCardsLength(props.managerInfos.cardCounts.total)
+        }, [props.managerInfos]
+    )
 
-
-
+    
+    //FETCH FUNCTION
     function getManagerCards(managerSlug: string, lastCursor: string): void {
-        
-        if (props.managerInfos.cardCounts.total === managerCards.length) {return}
-        if (managerSlug === '') {return}
-        
+                
         // eslint-disable-next-line
         const urlToFetch = urlPOST(props.environment)
 
@@ -74,37 +79,59 @@ export function GetManagerCards (props: any) {
         const body = {"variables": {}, "query": query}
         const request = {method: 'POST', headers: myHeaders, body: JSON.stringify(body)}
 
-
         fetch(urlToFetch, request)
         .then((response) => response.json())
         .then((responseJSON) => {
-            if (responseJSON !== undefined && responseJSON !== null) {
-                if (Object.keys(responseJSON).includes('data')) {
-                    if (Object.keys(responseJSON.data).includes('user')) {
 
-                        //CHECK CARDS
-                        setLastCursor(responseJSON.data.user.paginatedCards.edges[responseJSON.data.user.paginatedCards.edges.length-1].cursor)
-                        for (const card of responseJSON.data.user.paginatedCards.nodes) {
-                            setManagerCards((prev) => [...prev, card])
-                        }
-                        
-                    } else {
-                        props.updateSearchStatus('search-not-found')
-                    }
-                } else {
-                    props.updateSearchStatus('search-not-found')
-                }
-            } else {
+
+            if (responseJSON === null || responseJSON === undefined) {
                 props.updateSearchStatus('search-not-found')
+                return
             }
+
+            if (!Object.keys(responseJSON).includes('data') && responseJSON.data !== null) {
+                props.updateSearchStatus('search-not-found')
+                return
+            }
+
+            if (!Object.keys(responseJSON.data).includes('user') && responseJSON.data.user !== null) {
+                props.updateSearchStatus('search-not-found')
+                return
+            }
+
+            if (!Object.keys(responseJSON.data.user).includes('paginatedCards') && responseJSON.data.user.paginatedCards !== null) {
+                props.updateSearchStatus('search-not-found')
+                return
+            }
+
+            if (!Object.keys(responseJSON.data.user.paginatedCards).includes('edges') && responseJSON.data.user.paginatedCards.edges !== null) {
+                props.updateSearchStatus('search-not-found')
+                return
+            }
+
+            if (!Object.keys(responseJSON.data.user.paginatedCards).includes('nodes') && responseJSON.data.user.paginatedCards.nodes !== null) {
+                props.updateSearchStatus('search-not-found')
+                return
+            }
+
+            for (const card of responseJSON.data.user.paginatedCards.nodes) {
+                setManagerCards((prev) => [...prev, card])
+            }
+
+            const fetchLength = responseJSON.data.user.paginatedCards.edges.length
+            setLastFetchLength(fetchLength)
+            setLastCursor(responseJSON.data.user.paginatedCards.edges[fetchLength-1].cursor)
+   
+            
         })    
-        .catch((error) => {
-            console.log(error)
+        .catch(() => {
+            props.updateSearchStatus('search-not-found')
+            return
         })
-
-        return
-
     }
+
+
+
 
     return (
         <div></div>

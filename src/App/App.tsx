@@ -29,7 +29,7 @@ function App() {
   //ENVIRONMENT
   const environment:string = getEnvironement()
 
-  //SERVER STATUS
+  //CHECK SERVER STATUS
   const [serverStatus, setServerStatus] = useState<string | undefined>()
   useEffect(
     () => {
@@ -47,12 +47,13 @@ function App() {
       const request = {method: 'POST', headers: myHeaders, body: JSON.stringify(body)}
 
       fetch(urlToFetch, request)
-      .then((response) => {
+      .then(() => {
         setServerStatus('responding')
-        return response.json()
+        return
       })
       .catch(() => {
         setServerStatus('not-responding')
+        return
       })
 
     }, [environment]

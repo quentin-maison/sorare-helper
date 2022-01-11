@@ -24,18 +24,28 @@ export function GetManagerInfos (props: any) {
             fetch(urlToFetch, request)
             .then((response) => response.json())
             .then((responseJSON) => {
-                if (responseJSON !== undefined && responseJSON !== null) {
-                    if (Object.keys(responseJSON).includes('data')) {
-                        if (Object.keys(responseJSON.data).includes('user')) {
-                            props.updateManagerInfos(responseJSON.data.user)
-                        } else {
-                            props.updateSearchStatus('search-not-found')
-                        }
-                    } 
-                } 
-            })    
+
+                if (responseJSON === null || responseJSON === undefined) {
+                    props.updateSearchStatus('search-not-found')
+                    return
+                }
+
+                if (!Object.keys(responseJSON).includes('data') && responseJSON.data !== null) {
+                    props.updateSearchStatus('search-not-found')
+                    return
+                }
+                
+                if (!Object.keys(responseJSON.data).includes('user') && responseJSON.data.user !== null) {
+                    props.updateSearchStatus('search-not-found')
+                    return
+                }
+
+                props.updateManagerInfos(responseJSON.data.user)
+
+            })
             .catch(() => {
                 props.updateSearchStatus('search-not-found')
+                return
             })
 
             return
