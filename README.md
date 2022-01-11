@@ -23,8 +23,15 @@ The company raised 500M€ in september 2021
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)  
 Sorare Helper uses Sorare GraphQL API (https://github.com/sorare/api) through a back-end proxy (using lambda AWS)
 
+## HOW TO RUN SORARE HELPER LOCALLY?
 
+DOWNLOAD
+- Download Sorare Helper repository (https://github.com/quentin-maison/sorare-helper)
+- Download Sorare Helper API repository and save it at the root of the project (https://github.com/quentin-maison/sorare-helper-api)
 
+RUN SORARE HELPER
+- Run index.js on Sorare Helper API
+- Run npm start on Sorare Helper
 
 ## Available Scripts
 
