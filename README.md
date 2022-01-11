@@ -25,13 +25,12 @@ Sorare Helper uses Sorare GraphQL API (https://github.com/sorare/api) through a 
 
 ## HOW TO RUN SORARE HELPER LOCALLY?
 
-DOWNLOAD
-- Download Sorare Helper repository (https://github.com/quentin-maison/sorare-helper)
-- Download Sorare Helper API repository and save it at the root of the project (https://github.com/quentin-maison/sorare-helper-api)
+In local mode Sorare Helper needs to connect to Sorare Helper API
+1) Download Sorare Helper from this repository (https://github.com/quentin-maison/sorare-helper)
+2) Download Sorare Helper API (https://github.com/quentin-maison/sorare-helper-api) and save it at the root of Sorare Helper folder
+3) Run index.js on Sorare Helper API
+4) Run npm start on Sorare Helper
 
-RUN SORARE HELPER
-- Run index.js on Sorare Helper API
-- Run npm start on Sorare Helper
 
 ## Available Scripts
 
