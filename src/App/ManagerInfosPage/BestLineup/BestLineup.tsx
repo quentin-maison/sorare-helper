@@ -56,7 +56,7 @@ export function BestLineup (props: any) {
                     if (so5LeagueSelected === 'challenger-europe' && card.challengerEurope) {return true}
                     if (so5LeagueSelected === 'champion-asia' && card.championAsia) {return true}
                     if (so5LeagueSelected === 'champion-america' && card.championAmerica) {return true}
-                    if (so5LeagueSelected === 'u23' && card.u23Eligible) {return true}
+                    if (u23Eligibility(card)) {return true}
                     return false
                 }
             )
@@ -200,4 +200,16 @@ export function BestLineup (props: any) {
         </div>
 
     );
+}
+
+
+function u23Eligibility (card: Card): boolean {
+
+    if (!card.u23Eligible) {return false}
+    if (!card.championEurope && !card.challengerEurope && !card.championAsia && !card.championAmerica) {
+        return false
+    } else {
+        return true
+    }
+
 }
