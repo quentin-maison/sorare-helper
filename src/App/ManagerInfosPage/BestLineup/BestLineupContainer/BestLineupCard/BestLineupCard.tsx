@@ -36,7 +36,7 @@ export function BestLineupCard (props: any) {
     const noCardImg = (
         <div style={{height: '100%', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: 'solid 1px gray', borderRadius: '10px'}}>
             <HelpIcon />
-            <div style={{textAlign: 'center', marginTop: '20px'}}>No Player Available</div>
+            <div style={{textAlign: 'center', marginTop: '20px'}}>No player eligible for the gameweek #{props.nextGWInfos.gameWeek}</div>
         </div>
     );
 

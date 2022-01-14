@@ -3,6 +3,9 @@ import React, {useEffect, useState} from 'react'
 //COMPONENTS
 import {BestLineupCard} from './BestLineupCard/BestLineupCard'
 
+//SUPPORT-FUNCTIONS
+import { getTeamExpectedScore } from './support-functions/getTeamExpectedScore';
+
 //MATERIAL UI
 import Paper from '@mui/material/Paper';
 import Alert from '@mui/material/Alert';
@@ -21,16 +24,9 @@ export function BestLineupContainer (props: any) {
     useEffect(
         () => {
 
-            let sumES = 0 ;
-            for (const card of props.teamToDisplay) {
-                if (Object.keys(card).includes('expectedScore')) {
-                    sumES = sumES + card.expectedScore
-                } 
-            }
-            setTeamExpectedScore(sumES)
+            setTeamExpectedScore(getTeamExpectedScore(props.teamToDisplay))
         }, [props.teamToDisplay]
     )
-
 
     useEffect(
         () => {
@@ -56,11 +52,11 @@ export function BestLineupContainer (props: any) {
                 {
                     !props.displayTeam ? altertCard : 
                     <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginLeft: '5%', marginRight: '5%'}}>
-                        <BestLineupCard card={props.teamToDisplay[0]} key={0} position={'GOA'}/>
-                        <BestLineupCard card={props.teamToDisplay[1]} key={1} position={'DEF'}/>
-                        <BestLineupCard card={props.teamToDisplay[2]} key={2} position={'MID'}/>
-                        <BestLineupCard card={props.teamToDisplay[3]} key={3} position={'FOR'}/>
-                        <BestLineupCard card={props.teamToDisplay[4]} key={4} position={'EXT'}/>
+                        <BestLineupCard card={props.teamToDisplay[0]} nextGWInfos={props.nextGWInfos} key={0} position={'GOA'}/>
+                        <BestLineupCard card={props.teamToDisplay[1]} nextGWInfos={props.nextGWInfos} key={1} position={'DEF'}/>
+                        <BestLineupCard card={props.teamToDisplay[2]} nextGWInfos={props.nextGWInfos} key={2} position={'MID'}/>
+                        <BestLineupCard card={props.teamToDisplay[3]} nextGWInfos={props.nextGWInfos} key={3} position={'FOR'}/>
+                        <BestLineupCard card={props.teamToDisplay[4]} nextGWInfos={props.nextGWInfos} key={4} position={'EXT'}/>
                     </div>
                     
                 }

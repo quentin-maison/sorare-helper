@@ -149,10 +149,9 @@ export function BestLineup (props: any) {
             let numberAvailablePlayer = 0 ;
             for (const card of teamToDisplay) {
                 if (card.name !== 'No Player Available' && card.name !== '' && card.name !== null) {numberAvailablePlayer++}
-            }
+            }    
     
-    
-            if (numberAvailablePlayer >= 3) {
+            if (numberAvailablePlayer >= 0) {
                 setDisplayTeam(true)
             } else {
                 setDisplayTeam(false)
@@ -188,6 +187,7 @@ export function BestLineup (props: any) {
 
             <BestLineupContainer 
                 teamToDisplay={teamToDisplay}
+                nextGWInfos={props.nextGWInfos}
                 handleDisplayLineupDetails={handleDisplayLineupDetails}
                 displayTeam={displayTeam}/>
 
