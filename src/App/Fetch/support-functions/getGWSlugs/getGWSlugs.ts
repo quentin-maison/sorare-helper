@@ -1,75 +1,50 @@
+//SUPPORT FUNCTIONS
+import { urlPOST } from "../urlsToFetch"
+import { getEnvironement } from "../getEnvironment/getEnvironment"
+
+
 export function getNextGWSlug (): string {
 
-    const currentDate = new Date(Date.now())
-    let currentDay = currentDate.getDay()
-    const currentHour = currentDate.getHours()
 
-    if (currentHour >= 12) {
-        currentDay = currentDay + 0.5
-    }
+    const environment = getEnvironement()
+    const urlToFetch = urlPOST(environment)
 
-    let nextGWStart!: Date ;
-    let nextGWEnd!: Date ;
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const query = `query {so5Fixtures (first: 1) {nodes {slug}}}`
+    const body = {"variables": {}, "query": query}
+    const request = {method: 'POST', headers: myHeaders, body: JSON.stringify(body)}
 
-    function thisMondayDate (numberOfDayToAdd: number):number {
-        const today = new Date(Date.now());
+    const gwSlug = {slug: "5-8-apr-93202b11-63b0-4862-8fe9-497649b0f71c"}
 
-        //DIMANCHE OU LUNDI
-        if (today.getDay() === 0) {return  today.setDate(today.getDate() + 1 + numberOfDayToAdd)}
-        if (today.getDay() === 1) {return  today.setDate(today.getDate() + 0 + numberOfDayToAdd)}
+    fetch(urlToFetch, request)
+    .then((response) => {
+        return response.json()
+    })
+    .then((responseJSON) => {
 
-        //A PARTIR DE MARDI
-        if (today.getDay() === 2) {return  today.setDate(today.getDate() - 1 + numberOfDayToAdd)}
-        if (today.getDay() === 3) {return  today.setDate(today.getDate() - 2 + numberOfDayToAdd)}
-        if (today.getDay() === 4) {return  today.setDate(today.getDate() - 3 + numberOfDayToAdd)}
-        if (today.getDay() === 5) {return  today.setDate(today.getDate() - 4 + numberOfDayToAdd)}
-        if (today.getDay() === 6) {return  today.setDate(today.getDate() - 5 + numberOfDayToAdd)}
-        return today.setDate(today.getDate() + 1 + numberOfDayToAdd)
-    }
+        if (responseJSON === null || responseJSON === undefined) {
+            return
+        }
 
+        if (!Object.keys(responseJSON).includes('data') && responseJSON.data !== null) {
+            return
+        }
 
-    if (currentDay < 2.5) {
-        //NEXT GW START = next Tuesday
-        //NEXT GW END = next Friday
-        nextGWStart = new Date(thisMondayDate(1));
-        nextGWEnd = new Date(thisMondayDate(4));
-    }
+        if (!Object.keys(responseJSON.data).includes('so5Fixtures') && responseJSON.data.so5Fixtures !== null) {
+            return
+        }
 
-    if (currentDay >= 2.5 && currentDay < 5.5) {
-        //NEWT GW START = next Friday
-        //NEXT GW END = Tuesday next week
-        nextGWStart = new Date(thisMondayDate(4));
-        nextGWEnd = new Date(thisMondayDate(8));
-
-    }
-
-    if (currentDay >= 5.5) {
-        //NEWT GW START = Tuesday next week
-        //NEXT GW END = Friday next week
-        nextGWStart = new Date(thisMondayDate(8));
-        nextGWEnd = new Date(thisMondayDate(11));
-
-    }
+        if (!Object.keys(responseJSON.data.so5Fixtures).includes('nodes') && responseJSON.data.so5Fixtures.nodes !== null) {
+            return
+        }
 
 
-    
+    })
+    .catch((error) => {
+        console.log(error)
+    })
 
 
-    const dateNextGWStart = nextGWStart.getDate()
-    const monthNextGWStart = monthNames[nextGWStart.getMonth()]
-    const dateNextGWEnd = nextGWEnd.getDate()
-    const monthNextGWEnd = monthNames[nextGWEnd.getMonth()]
-
-    let nextGWSlug: string ;
-
-    if (monthNextGWStart === monthNextGWEnd) {
-        nextGWSlug = `${dateNextGWStart}-${dateNextGWEnd}-${monthNextGWStart}`
-    } else {
-        nextGWSlug = `${dateNextGWStart}-${monthNextGWStart}-${dateNextGWEnd}-${monthNextGWEnd}`
-    }
-
-    return nextGWSlug
+    return gwSlug.slug
 }
-
-
-const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep' ,'oct', 'nov', 'dec']

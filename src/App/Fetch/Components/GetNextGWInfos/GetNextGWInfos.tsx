@@ -6,7 +6,7 @@ import { getNextGWSlug } from '../../support-functions/getGWSlugs/getGWSlugs'
 
 // eslint-disable-next-line
 export function GetNextGWInfos (props: any) {
-
+    
     useEffect(
         () => {
 
@@ -14,7 +14,7 @@ export function GetNextGWInfos (props: any) {
 
             const urlToFetch = urlPOST(props.environment)
 
-            //GET GW SLUG
+            //GET GW SLUG 
             const GWSlug = getNextGWSlug()
 
             const myHeaders = new Headers();

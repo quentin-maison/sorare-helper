@@ -65,7 +65,6 @@ export function Fetch (props: any) {
                 managerInfos={managerInfos}
                 updateManagerCardsLength={props.updateManagerCardsLength}
                 updateManagerCardsRetrieved={props.updateManagerCardsRetrieved}
-
             />
             
 

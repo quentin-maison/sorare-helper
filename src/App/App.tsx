@@ -69,7 +69,6 @@ function App() {
         setDisplayAlertServer({display: 'block'})
       }
 
-
     }, [serverStatus]
   )
 
@@ -82,7 +81,7 @@ function App() {
 
   //HANDLE MANAGER SEARCH
   const [managerSearched, setManagerSearched] = useState('')
-  function handleManagerSearch(managerName: string) {
+  async function handleManagerSearch(managerName: string) {
     setManagerSearched(managerName)
     window.scrollTo(0, 0);
   }
